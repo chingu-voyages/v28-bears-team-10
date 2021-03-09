@@ -1,8 +1,0 @@
-version: "1"
-rules:
-  - base: main
-    upstream: chingu-voyages:main
-    mergeMethod: hardreset
-  - base: develop
-    upstream: chingu-voyages:develop
-    mergeMethod: hardreset
