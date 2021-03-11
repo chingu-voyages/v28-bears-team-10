@@ -14,10 +14,8 @@ export default function Home() {
       </Head>
 
       <main>
-        <div></div>
-        <div></div>
         <SimpleGrid columns={2} spacing={10}>
-          <Link href="/">
+          <Link href="/jobs">
             <a>
               <Center
                 bg={blue}
@@ -33,7 +31,7 @@ export default function Home() {
               </Center>
             </a>
           </Link>
-          <Link href="/">
+          <Link href="/volunteers">
             <a>
               <Center
                 bg={blue}
