@@ -15,6 +15,7 @@ export default function Home() {
 
       <main>
         <div></div>
+        <div></div>
         <SimpleGrid columns={2} spacing={10}>
           <Link href="/">
             <a>
