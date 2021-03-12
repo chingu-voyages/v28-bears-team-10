@@ -13,9 +13,6 @@ var charity = new Schema({
   location: {
     type: String,
   },
-  skills: {
-    type: Array,
-  },
   description: {
     type: String,
   },
@@ -29,12 +26,6 @@ var charity = new Schema({
     type: String,
   },
   twitter: {
-    type: String,
-  },
-  linkedin: {
-    type: String,
-  },
-  github: {
     type: String,
   },
 });
