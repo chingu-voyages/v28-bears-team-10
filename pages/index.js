@@ -2,7 +2,6 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { Box, SimpleGrid, Center, Text } from "@chakra-ui/react";
 import Link from "next/link";
-// import "../styles/theme.js";
 
 export default function Home() {
   return (
@@ -42,7 +41,7 @@ export default function Home() {
                 borderRadius="10px"
               >
                 <Text textAlign={["left", "center"]} fontSize={30}>
-                  Search for or register as a volunteer
+                  Search for, or register as a volunteer
                 </Text>
               </Center>
             </a>
