@@ -1,12 +1,13 @@
 import React from 'react';
-import { Box, Center, Container, Flex, Text } from '@chakra-ui/layout';
+import { Box, Center, Container, Flex, Text, Spacer } from '@chakra-ui/layout';
+import { Tooltip } from '@chakra-ui/react';
 import { InfoOutlineIcon } from '@chakra-ui/icons';
 
 export default function Nav({ children }) {
     return (
         <>
             <Flex
-                borderBottom=" 1px solid orange"
+                borderBottom=" 2px solid orange"
                 pos="fixed"
                 top={0}
                 w="100vw"
@@ -19,18 +20,41 @@ export default function Nav({ children }) {
                 <Box>
                     <Text>Logo Container</Text>
                 </Box>
-                <Box>
-                    <Text>this is the navbar</Text>
-                </Box>
-                <Box>
-                    <InfoOutlineIcon />
-                </Box>
-                <Box>
-                    <Text>Charity Sign Up</Text>
-                </Box>
-                <Box>
-                    <Text>Volunteer Sign Up</Text>
-                </Box>
+
+                <Spacer />
+                {/* <Spacer /> */}
+                <Tooltip label="Coming Soon" aria-label="A tooltip">
+                    <Box mx="5px">
+                        <InfoOutlineIcon w={6} h={6} />
+                    </Box>
+                </Tooltip>
+
+                <Tooltip label="Coming Soon" aria-label="A tooltip">
+                    <Box
+                        mx="5px"
+                        as="button"
+                        borderRadius="md"
+                        bg="blue"
+                        color="white"
+                        px={2}
+                        h={10}>
+                        <Text p="0" fontWeight="600">
+                            CHARITY SIGN UP
+                        </Text>
+                    </Box>
+                </Tooltip>
+                <Tooltip label="Coming Soon" aria-label="A tooltip">
+                    <Box
+                        mx="5px"
+                        as="button"
+                        borderRadius="md"
+                        bg="orange"
+                        color="white"
+                        px={2}
+                        h={10}>
+                        <Text fontWeight="600">VOLUNTEER SIGN UP</Text>
+                    </Box>
+                </Tooltip>
             </Flex>
         </>
     );
