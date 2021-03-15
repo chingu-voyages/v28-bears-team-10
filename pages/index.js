@@ -19,7 +19,7 @@ export default function Home() {
                                 color="white"
                                 borderRadius="10px">
                                 <Text textAlign={['left', 'center']} fontSize={30}>
-                                    Search for a job or post a job
+                                    Search for a job
                                 </Text>
                             </Center>
                         </a>
@@ -34,7 +34,7 @@ export default function Home() {
                                 color="white"
                                 borderRadius="10px">
                                 <Text textAlign={['left', 'center']} fontSize={30}>
-                                    Search for, or register as a volunteer
+                                    Search for a volunteer
                                 </Text>
                             </Center>
                         </a>

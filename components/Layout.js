@@ -13,15 +13,7 @@ export default function Layout({ children }) {
                     content="Chinu.io project - an app that connects charities and volunteers to help with digital products andissues"
                 />
             </Head>
-            <Flex
-                maxW="100%"
-                h="100vh"
-                bg="red.100"
-                display="flex"
-                my="0"
-                mx="auto"
-                justify="center"
-                align="center">
+            <Flex maxW="100%" h="100vh" my="0" mx="auto" justify="center" align="center">
                 <Nav />
                 {children}
             </Flex>
