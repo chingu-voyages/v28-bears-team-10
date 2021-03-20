@@ -1,6 +1,6 @@
 import connectDB from '../../../middleware/db';
 
-import Charity from '../../../models/Charity.js';
+import Charity from '../../../models/Charity';
 
 const charities = async (req, res) => {
     // @route     GET api/charities

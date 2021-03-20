@@ -1,6 +1,6 @@
 import connectDB from "../../../middleware/db";
 
-import Dev from "../../../models/Dev.js";
+import Dev from "../../../models/Dev";
 
 const dev = async (req, res) => {
   // @route     GET api/dev/:id
