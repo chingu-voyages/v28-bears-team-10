@@ -8,7 +8,7 @@ export default function VolunteersSignupPage() {
     return (
         <>
             <Layout>
-                <Container centerContent>
+                <Container maxW="container.lg">
                     <VolunteerSignupForm />
                 </Container>
             </Layout>
