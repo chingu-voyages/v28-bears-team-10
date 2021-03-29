@@ -13,13 +13,21 @@ import {
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import CountrySelector from './SelectCountryInput';
+import SkillsSelector from './SkillsSelector';
 
 export default function VolunteerSignupForm() {
     const [form, setForm] = useState({
         username: '',
         first_name: '',
         last_name: '',
-        email: 'New'
+        email: 'New',
+        location: '',
+        website: '',
+        github: '',
+        linkedIn: '',
+        twitter: '',
+        skills: [],
+        description: ''
     });
 
     function handleChange(e) {
@@ -27,11 +35,13 @@ export default function VolunteerSignupForm() {
             ...form,
             [e.target.name]: e.target.value
         });
+        console.log(e.target.value);
     }
 
     function handleSubmit(e) {
         e.preventDefault();
-        create();
+        // create();
+        console.log(form);
     }
 
     async function create() {
@@ -133,13 +143,8 @@ export default function VolunteerSignupForm() {
                     </GridItem>
                     <GridItem>
                         <FormControl id="skills" my={2}>
-                            <FormLabel>skills</FormLabel>
-                            <Input
-                                type="text"
-                                placeholder="Enter your tech skills"
-                                name="skills"
-                                onChange={handleChange}
-                            />
+                            <FormLabel>Skills</FormLabel>
+                            <SkillsSelector onChange={handleChange} />
                         </FormControl>
                         <FormControl id="description" my={2}>
                             <FormLabel>Description</FormLabel>
