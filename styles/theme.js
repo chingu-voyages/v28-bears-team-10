@@ -16,6 +16,10 @@ const theme = extendTheme({
         white: '#fff',
         orange: '#FF6700',
         blue: '#268ED0'
+    },
+    fonts: {
+        body: "'Glacial Indifference', sans-serif",
+        heading: "'Glacial Indifference', sans-serif"
     }
 });
 
