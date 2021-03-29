@@ -18,8 +18,8 @@ const theme = extendTheme({
         blue: '#268ED0'
     },
     fonts: {
-        body: "'Glacial Indifference', sans-serif",
-        heading: "'Glacial Indifference', sans-serif"
+        body: "'Glacial Indifference Regular', sans-serif",
+        heading: "'Glacial Indifference Bold', sans-serif"
     }
 });
 
