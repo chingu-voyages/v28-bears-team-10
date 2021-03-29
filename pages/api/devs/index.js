@@ -2,6 +2,7 @@ import connectDB from "../../../middleware/db";
 
 import Dev from "../../../models/dev";
 
+
 const devs = async (req, res) => {
   // @route     GET api/devs
   // @desc      Get all devs
