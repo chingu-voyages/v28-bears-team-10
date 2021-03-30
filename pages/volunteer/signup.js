@@ -9,8 +9,8 @@ export default function VolunteersSignupPage() {
         <>
             <Layout>
                 <Container maxW="container.lg">
-                    <Flex justify="center" mb={5}>
-                        <Heading centercontent>Create your Volunteer Profile!</Heading>
+                    <Flex justify="center" mb={5} mt={5}>
+                        <Heading color="black">Create your Volunteer Profile!</Heading>
                     </Flex>
                     <VolunteerSignupForm />
                 </Container>

@@ -1,5 +1,3 @@
-Skillsselector.js;
-
 import React, { useState } from 'react';
 import { FormLabel, Checkbox, CheckboxGroup, Grid, GridItem, HStack } from '@chakra-ui/react';
 

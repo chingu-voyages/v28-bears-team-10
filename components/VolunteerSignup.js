@@ -13,7 +13,7 @@ import {
     GridItem
 } from '@chakra-ui/react';
 import Link from 'next/link';
-import CountrySelector from './SelectCountryInput';
+import CountrySelector from './CountrySelector';
 import SkillsSelector from './SkillsSelector';
 
 export default function VolunteerSignupForm() {
@@ -76,7 +76,7 @@ export default function VolunteerSignupForm() {
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <Grid templateColumns="1fr 1fr 1fr" columnGap={20}>
+                <Grid templateColumns="1fr 1fr 1fr" columnGap={20} color="black">
                     <GridItem mx={2}>
                         <FormControl id="username" isRequired my={2}>
                             <FormLabel>User name</FormLabel>
@@ -95,7 +95,7 @@ export default function VolunteerSignupForm() {
                             />
                         </FormControl>
                         <FormControl id="last_name" isRequired my={2}>
-                            <FormLabel>First name</FormLabel>
+                            <FormLabel>Last name</FormLabel>
                             <Input
                                 placeholder="enter last name"
                                 name="last_name"
