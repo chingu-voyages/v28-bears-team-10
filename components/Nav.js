@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Center, Container, Flex, Text, Spacer } from '@chakra-ui/layout';
 import { Tooltip } from '@chakra-ui/react';
 import { InfoOutlineIcon } from '@chakra-ui/icons';
+import Link from 'next/link';
 
 export default function Nav({ children }) {
     return (
@@ -43,7 +44,7 @@ export default function Nav({ children }) {
                         </Text>
                     </Box>
                 </Tooltip>
-                <Tooltip label="Coming Soon" aria-label="A tooltip">
+                <Link href={'/volunteers/signup'}>
                     <Box
                         mx="5px"
                         as="button"
@@ -54,7 +55,7 @@ export default function Nav({ children }) {
                         h={10}>
                         <Text fontWeight="600">VOLUNTEER SIGN UP</Text>
                     </Box>
-                </Tooltip>
+                </Link>
             </Flex>
         </>
     );
