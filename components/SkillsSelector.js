@@ -31,6 +31,24 @@ export default function SkillsSelector({ onChange }) {
                     <Checkbox name="skills" value=".NET" onChange={onChange}>
                         .NET
                     </Checkbox>
+                    <Checkbox name="skills" value="CSS" onChange={onChange}>
+                        CSS
+                    </Checkbox>
+                    <Checkbox name="skills" value="Graphql" onChange={onChange}>
+                        Graphql
+                    </Checkbox>
+                    <Checkbox name="skills" value="Frontend" onChange={onChange}>
+                        Frontend
+                    </Checkbox>
+                    <Checkbox name="skills" value="Backend" onChange={onChange}>
+                        Backend
+                    </Checkbox>
+                    <Checkbox name="skills" value="Full Stack" onChange={onChange}>
+                        Full Stack
+                    </Checkbox>
+                    <Checkbox name="skills" value="UX/UI" onChange={onChange}>
+                        UX/UI
+                    </Checkbox>
                 </CheckboxGroup>
             </Grid>
         </>
