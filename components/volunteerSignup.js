@@ -7,6 +7,7 @@ import {
     FormErrorMessage,
     FormHelperText,
     Form,
+    Textarea,
     Button,
     Grid,
     GridItem
@@ -31,11 +32,26 @@ export default function VolunteerSignupForm() {
     });
 
     function handleChange(e) {
-        setForm({
-            ...form,
-            [e.target.name]: e.target.value
-        });
-        console.log(e.target.value);
+        const checkedArr = [];
+        if (e.target.type !== 'checkbox') {
+            setForm({
+                ...form,
+                [e.target.name]: e.target.value
+            });
+            console.log(form);
+        } else {
+            const checkeds = document.getElementsByTagName('input');
+            for (let i = 0; i < checkeds.length; i++) {
+                if (checkeds[i].checked) {
+                    checkedArr.push(checkeds[i].value);
+                }
+            }
+            setForm({
+                ...form,
+                skills: checkedArr
+            });
+        }
+        console.log(checkedArr);
     }
 
     function handleSubmit(e) {
@@ -68,7 +84,7 @@ export default function VolunteerSignupForm() {
                         <FormControl id="username" isRequired my={2}>
                             <FormLabel>User name</FormLabel>
                             <Input
-                                placeholder="choose username "
+                                placeholder="Choose username "
                                 name="username"
                                 onChange={handleChange}
                             />
@@ -144,12 +160,14 @@ export default function VolunteerSignupForm() {
                     <GridItem>
                         <FormControl id="skills" my={2}>
                             <FormLabel>Skills</FormLabel>
+                            <FormHelperText mb={1}>
+                                We recommend to pick up to 4 that you are most confident with
+                            </FormHelperText>
                             <SkillsSelector onChange={handleChange} />
                         </FormControl>
                         <FormControl id="description" my={2}>
                             <FormLabel>Description</FormLabel>
-                            <Input
-                                type="text"
+                            <Textarea
                                 placeholder="Write a sentance or two about yourself "
                                 name="description"
                                 onChange={handleChange}
