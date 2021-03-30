@@ -9,16 +9,16 @@ export default function SkillsSelector({ onChange }) {
                     <Checkbox name="skills" value="Javascript" onChange={onChange}>
                         Javascript
                     </Checkbox>
-                    <Checkbox name="skills" value="HTML" onChange={onChange} colorScheme="green">
+                    <Checkbox name="skills" value="HTML" onChange={onChange}>
                         HTML
                     </Checkbox>
-                    <Checkbox name="skills" value="React" onChange={onChange} colorScheme="green">
+                    <Checkbox name="skills" value="React" onChange={onChange}>
                         React
                     </Checkbox>
-                    <Checkbox name="skills" value="Node" onChange={onChange} colorScheme="green">
+                    <Checkbox name="skills" value="Node" onChange={onChange}>
                         Node
                     </Checkbox>
-                    <Checkbox name="skills" value="Vue" onChange={onChange} colorScheme="green">
+                    <Checkbox name="skills" value="Vue" onChange={onChange}>
                         Vue
                     </Checkbox>
                     <Checkbox name="skills" value="Typescript" onChange={onChange}>
