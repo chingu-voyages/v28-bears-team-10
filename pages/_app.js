@@ -1,21 +1,13 @@
-import '../styles/globals.css';
-import { extendTheme } from '@chakra-ui/react';
-
+// import '../styles/globals.css';
+import theme from '../styles/theme';
+import { Global } from '@emotion/react';
+import fonts from '../styles/font-face';
 import { ChakraProvider } from '@chakra-ui/react';
-
-const theme = extendTheme({
-    colors: {
-        transparent: 'transparent',
-        black: '#000',
-        white: '#fff',
-        orange: '#FF6700',
-        blue: '#268ED0'
-    }
-});
 
 function MyApp({ Component, pageProps }) {
     return (
         <ChakraProvider theme={theme}>
+            <Global styles={fonts} />
             <Component {...pageProps} />
         </ChakraProvider>
     );
