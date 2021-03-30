@@ -38,7 +38,6 @@ export default function VolunteerSignupForm() {
                 ...form,
                 [e.target.name]: e.target.value
             });
-            console.log(form);
         } else {
             const checkeds = document.getElementsByTagName('input');
             for (let i = 0; i < checkeds.length; i++) {
@@ -51,13 +50,6 @@ export default function VolunteerSignupForm() {
                 skills: checkedArr
             });
         }
-        console.log(checkedArr);
-    }
-
-    function handleSubmit(e) {
-        e.preventDefault();
-        // create();
-        console.log(form);
     }
 
     async function create() {
@@ -75,6 +67,11 @@ export default function VolunteerSignupForm() {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        create();
     }
     return (
         <>
@@ -124,7 +121,7 @@ export default function VolunteerSignupForm() {
                             <FormLabel>Website</FormLabel>
                             <Input
                                 type="text"
-                                placeholder="Enter your portfolio or website url"
+                                placeholder="Enter your website url"
                                 name="website"
                                 onChange={handleChange}
                             />
