@@ -1,8 +1,9 @@
 import React from 'react';
 import { Box, Center, Container, Flex, Text, Spacer, Grid, GridItem } from '@chakra-ui/layout';
-import { Tooltip, Image, Button } from '@chakra-ui/react';
+import { Tooltip, Image, Button, Avatar } from '@chakra-ui/react';
 import { InfoOutlineIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
+import styles from './VolunteerProfile.module.css';
 
 const testVolProfile = {
     id: 1,
@@ -26,19 +27,34 @@ const testVolProfile = {
         'https://epa.gov/sit/amet/eleifend/pede/libero/quis.html?ipsum=aenean&integer=sit&a=amet&nibh=justo&in=morbi&quis=ut&justo=odio&maecenas=cras&rhoncus=mi&aliquam=pede&lacus=malesuada&morbi=in&quis=imperdiet&tortor=et&id=commodo&nulla=vulputate&ultrices=justo&aliquet=in&maecenas=blandit&leo=ultrices&odio=enim',
     date: '7/26/2020'
 };
-export default function VolnteerProfile() {
+export default function VolunteerProfile() {
+    const [turned, setTurned] = React.useState(false);
+
+    const { flipcard, cardFront, cardBack, flip } = styles;
+
+    function handleClick() {
+        setTurned(!turned);
+        console.log(turned);
+    }
+
     return (
         <>
             <Flex bg="blue" direction="column" w="300px" height="400px" borderRadius="10px">
                 <Flex direction="column" align="center" w="100%" height="150px">
-                    <Box mt={3} w="90px" height="90px" borderRadius="50%" border="solid 1px orange">
-                        <Image mx="auto" src={testVolProfile.avatar} />
-                    </Box>
+                    <Avatar
+                        border="solid 1px orange"
+                        mt={2}
+                        w="90px"
+                        h="90px"
+                        mx="auto"
+                        src={testVolProfile.avatar}
+                    />
+                    {/* </Box> */}
                     <Text> {testVolProfile.first_name}</Text>
                     <Text> {testVolProfile.location}</Text>
                 </Flex>
                 <Flex
-                    // position="relative"
+                    className={turned ? `${flip} ${flipcard}` : flipcard}
                     direction="column"
                     align="center"
                     justify="space-between"
@@ -46,22 +62,35 @@ export default function VolnteerProfile() {
                     w="100%"
                     height="250px"
                     borderTop="orange 1px solid">
-                    <Grid pt={2} w="50%" templateColumns="1fr 1fr">
-                        {testVolProfile.skills.map((skill) => (
-                            <Text key={skill}>{skill}</Text>
-                        ))}
-                    </Grid>
-                    <Text py={2}>{testVolProfile.description}</Text>
-                    <Button
-                        // position="absolute"
-                        bottom={2}
-                        mt={2}
-                        bg="orange"
-                        color="white"
-                        borderRadius="20px">
-                        MORE INFO
-                    </Button>
+                    <Flex className={cardFront}>
+                        cardFront
+                        <Grid pt={2} w="50%" templateColumns="1fr 1fr">
+                            {testVolProfile.skills.map((skill) => (
+                                <Text key={skill}>{skill}</Text>
+                            ))}
+                        </Grid>
+                        <Text py={2}>{testVolProfile.description}</Text>
+                    </Flex>
+                    <Flex
+                        className={cardBack}
+                        direction="column"
+                        align="center"
+                        justify="space-between"
+                        p={2}>
+                        cardback
+                        <Text>{testVolProfile.website.substr(0, 20)}</Text>
+                        <Text py={2}>{testVolProfile.github.substr(0, 20)}</Text>
+                    </Flex>
                 </Flex>
+                <Button
+                    onClick={handleClick}
+                    bottom={2}
+                    mt={2}
+                    bg="orange"
+                    color="white"
+                    borderRadius="20px">
+                    MORE INFO
+                </Button>
             </Flex>
         </>
     );
