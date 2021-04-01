@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box, Center, Container, Flex, Text, Spacer, Grid, GridItem } from '@chakra-ui/layout';
-import { Tooltip, Image, Button, Avatar } from '@chakra-ui/react';
+import { Tooltip, Image, Button, Avatar, Link } from '@chakra-ui/react';
 import { InfoOutlineIcon } from '@chakra-ui/icons';
-import Link from 'next/link';
+// import Link from 'next/link';
 import styles from './VolunteerProfile.module.css';
 
 const testVolProfile = {
@@ -34,22 +34,26 @@ export default function VolunteerProfile() {
 
     function handleClick() {
         setTurned(!turned);
-        console.log(turned);
     }
 
     return (
         <>
             <Flex bg="blue" direction="column" w="300px" height="400px" borderRadius="10px">
-                <Flex direction="column" align="center" w="100%" height="150px">
+                <Flex
+                    direction="column"
+                    align="center"
+                    w="100%"
+                    height="37%"
+                    borderBottom="orange 1px solid">
                     <Avatar
                         border="solid 1px orange"
-                        mt={2}
+                        mt={1}
                         w="90px"
                         h="90px"
                         mx="auto"
                         src={testVolProfile.avatar}
                     />
-                    {/* </Box> */}
+
                     <Text> {testVolProfile.first_name}</Text>
                     <Text> {testVolProfile.location}</Text>
                 </Flex>
@@ -60,16 +64,14 @@ export default function VolunteerProfile() {
                     justify="space-between"
                     p={2}
                     w="100%"
-                    height="250px"
-                    borderTop="orange 1px solid">
-                    <Flex className={cardFront}>
-                        cardFront
+                    h="48%">
+                    <Flex className={cardFront} direction="column" align="center">
                         <Grid pt={2} w="50%" templateColumns="1fr 1fr">
                             {testVolProfile.skills.map((skill) => (
                                 <Text key={skill}>{skill}</Text>
                             ))}
                         </Grid>
-                        <Text py={2}>{testVolProfile.description}</Text>
+                        <Text p={2}>{testVolProfile.description}</Text>
                     </Flex>
                     <Flex
                         className={cardBack}
@@ -77,20 +79,32 @@ export default function VolunteerProfile() {
                         align="center"
                         justify="space-between"
                         p={2}>
-                        cardback
-                        <Text>{testVolProfile.website.substr(0, 20)}</Text>
-                        <Text py={2}>{testVolProfile.github.substr(0, 20)}</Text>
+                        <Link href={testVolProfile.website} isExternal>
+                            <Text>Website</Text>
+                        </Link>
+                        <Link href={testVolProfile.github} isExternal>
+                            <Text>Github</Text>
+                        </Link>
+                        <Link href={testVolProfile.linkedin} isExternal>
+                            <Text>Linkedin</Text>
+                        </Link>
+                        <Link href={testVolProfile.twitter} isExternal>
+                            <Text>Twitter</Text>
+                        </Link>
+
+                        <Text py={2}>{testVolProfile.email}</Text>
                     </Flex>
                 </Flex>
-                <Button
-                    onClick={handleClick}
-                    bottom={2}
-                    mt={2}
-                    bg="orange"
-                    color="white"
-                    borderRadius="20px">
-                    MORE INFO
-                </Button>
+                <Flex justify="center" pt={2}>
+                    <Button
+                        onClick={handleClick}
+                        w="50%"
+                        bg="orange"
+                        color="white"
+                        borderRadius="20px">
+                        MORE INFO
+                    </Button>
+                </Flex>
             </Flex>
         </>
     );
