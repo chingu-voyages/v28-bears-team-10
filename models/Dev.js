@@ -19,16 +19,17 @@ var dev = new Schema({
         required: true
     },
     gender: {
-        type: String,
+        type: String
     },
     location: {
-        type: String,
+        type: String
     },
     skills: {
         type: Array
     },
     description: {
-        type: String
+        type: String,
+        maxlength: 150
     },
     avatar: {
         type: String

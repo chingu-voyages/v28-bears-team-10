@@ -165,6 +165,7 @@ export default function VolunteerSignupForm() {
                         <FormControl id="description" my={2}>
                             <FormLabel>Description</FormLabel>
                             <Textarea
+                                maxlength="150"
                                 placeholder="Write a sentance or two about yourself "
                                 name="description"
                                 onChange={handleChange}
