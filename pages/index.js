@@ -8,7 +8,7 @@ export default function Home() {
     return (
         <Layout>
             <main>
-                <SimpleGrid columns={2} spacing={10}>
+                <SimpleGrid columns={2} spacing={10} pt={150}>
                     <Link href="/jobs">
                         <a>
                             <Center
