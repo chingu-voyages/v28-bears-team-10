@@ -17,7 +17,9 @@ export default function Nav({ children }) {
                 align="center"
                 justify="space-between"
                 color="black"
-                px="2%">
+                px="2%"
+                bg="white"
+                zIndex={2}>
                 <Box>
                     <Text>Logo Container</Text>
                 </Box>
