@@ -35,7 +35,7 @@ export default function VolunteerProfile({ user }) {
 
     return (
         <>
-            <Flex bg="blue" direction="column" w="300px" height="400px" borderRadius="10px">
+            <Flex bg="blue" direction="column" w="250px" height="300px" borderRadius="10px">
                 {!user && <Text color="black">Profile not found</Text>}
                 <Flex
                     direction="column"
@@ -46,8 +46,8 @@ export default function VolunteerProfile({ user }) {
                     <Avatar
                         border="solid 1px orange"
                         mt={1}
-                        w="90px"
-                        h="90px"
+                        w="60px"
+                        h="60px"
                         mx="auto"
                         src={avatar}
                     />
@@ -60,21 +60,29 @@ export default function VolunteerProfile({ user }) {
                     direction="column"
                     align="center"
                     justify="space-between"
-                    p={2}
+                    py={2}
                     w="100%"
-                    h="48%">
+                    h="51%">
                     <Flex className={cardFront} direction="column" align="center">
-                        <Grid pt={2} w="50%" templateColumns="1fr 1fr">
-                            {skills && skills.map((skill) => <Text key={skill}>{skill}</Text>)}
+                        <Grid pt={0} w="50%" templateColumns="1fr 1fr">
+                            {skills &&
+                                skills.map((skill) => (
+                                    <Text fontSize="15px" key={skill}>
+                                        {skill}
+                                    </Text>
+                                ))}
                         </Grid>
-                        <Text p={2}>{description && description.substr(0, 151)}</Text>
+                        <Text fontSize="15px" px={2}>
+                            {description && description.substr(0, 151)}
+                        </Text>
                     </Flex>
                     <Flex
                         className={cardBack}
                         direction="column"
                         align="center"
                         justify="space-between"
-                        p={2}>
+                        p={0}
+                        fontSize="14px">
                         {website && (
                             <Link href={website} isExternal>
                                 <Text>Website</Text>
@@ -95,16 +103,22 @@ export default function VolunteerProfile({ user }) {
                                 <Text>Twitter</Text>
                             </Link>
                         )}
-                        {email && <Text py={2}>{email || 'available to connnect on social'}</Text>}
+                        {email && (
+                            <Text transform="translateY(-5px)" py={2}>
+                                {email || 'available to connnect on social'}
+                            </Text>
+                        )}
                     </Flex>
                 </Flex>
                 <Flex justify="center" pt={2}>
                     <Button
                         onClick={handleClick}
-                        w="50%"
+                        w="35%"
+                        h="20px"
                         bg="orange"
                         color="white"
-                        borderRadius="20px">
+                        borderRadius="10px"
+                        fontSize="13px">
                         MORE INFO
                     </Button>
                 </Flex>
