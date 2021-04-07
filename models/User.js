@@ -11,9 +11,15 @@ var user = new Schema({
     enum: ["charity", "volunteer", "unknown"],
     default: "unknown",
   },
+  email: {
+    type: String,
+  },
   profileUpdated: {
     type: Boolean,
     default: false,
+  },
+  avatar: {
+    type: String,
   },
   location: {
     type: String,
