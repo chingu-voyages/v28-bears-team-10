@@ -1,38 +1,50 @@
 import React from 'react';
-import { Box, Center, Container, Flex, Text, Spacer } from '@chakra-ui/layout';
-import { Tooltip } from '@chakra-ui/react';
+import { Box, Center, Container, Flex, Text, Spacer, Grid, GridItem } from '@chakra-ui/layout';
+import { Tooltip, Button } from '@chakra-ui/react';
 import { InfoOutlineIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
 
 export default function Nav({ children }) {
     return (
         <>
-            <Flex
+            <Grid
+                templateColumns="repeat(11, 1fr) 40px"
+                gap={2}
                 borderBottom=" 2px solid orange"
                 pos="fixed"
                 top={0}
                 w="100vw"
                 height="70px"
-                direction="row"
-                align="center"
-                justify="space-between"
+                // alignItems="center"
+                // justifyContent="center"
+                placeItems="center"
                 color="black"
-                px="2%"
+                px="1%"
                 bg="white"
                 zIndex={2}>
-                <Box>
-                    <Text>Logo Container</Text>
-                </Box>
-
-                <Spacer />
-                {/* <Spacer /> */}
-                <Tooltip label="Coming Soon" aria-label="A tooltip">
-                    <Box mx="5px">
-                        <InfoOutlineIcon w={6} h={6} />
+                <GridItem colSpan={2}>
+                    <Text textAlign="start" fontSize={30}>
+                        TECHVolunteer
+                    </Text>
+                </GridItem>
+                <GridItem colStart={4} colEnd={9} direction="row" justify="center">
+                    <Box
+                        mx="5px"
+                        as="button"
+                        borderRadius="md"
+                        bg="blue"
+                        color="white"
+                        px={2}
+                        h={10}
+                        w="160px">
+                        <Link href="/jobs">
+                            <a>
+                                <Text p="0" fontWeight="600">
+                                    JOBS BOARD
+                                </Text>
+                            </a>
+                        </Link>
                     </Box>
-                </Tooltip>
-
-                <Tooltip label="Coming Soon" aria-label="A tooltip">
                     <Box
                         mx="5px"
                         as="button"
@@ -41,24 +53,50 @@ export default function Nav({ children }) {
                         color="white"
                         px={2}
                         h={10}>
-                        <Text p="0" fontWeight="600">
-                            CHARITY SIGN UP
-                        </Text>
+                        <Link href="/volunteers">
+                            <a>
+                                <Text p="0" fontWeight="600">
+                                    VOLUNTEERS BOARD
+                                </Text>
+                            </a>
+                        </Link>
                     </Box>
+                </GridItem>
+
+                <GridItem colSpan={3} direction="row" display="flex">
+                    <Tooltip label="Coming Soon" aria-label="A tooltip">
+                        <Box
+                            mx="5px"
+                            as="button"
+                            borderRadius="md"
+                            bg="blue"
+                            color="white"
+                            px={2}
+                            h={10}>
+                            <Text p="0" fontWeight="600">
+                                CHARITY SIGN UP
+                            </Text>
+                        </Box>
+                    </Tooltip>
+                    <Link href={'/volunteer/signup'}>
+                        <Box
+                            mx="5px"
+                            as="button"
+                            borderRadius="md"
+                            bg="orange"
+                            color="white"
+                            px={2}
+                            h={10}>
+                            <Text fontWeight="600">VOLUNTEER SIGN UP</Text>
+                        </Box>
+                    </Link>
+                </GridItem>
+                <Tooltip label="Coming Soon" aria-label="A tooltip">
+                    <GridItem mx="5px" colStart={12}>
+                        <InfoOutlineIcon w={6} h={6} />
+                    </GridItem>
                 </Tooltip>
-                <Link href={'/volunteer/signup'}>
-                    <Box
-                        mx="5px"
-                        as="button"
-                        borderRadius="md"
-                        bg="orange"
-                        color="white"
-                        px={2}
-                        h={10}>
-                        <Text fontWeight="600">VOLUNTEER SIGN UP</Text>
-                    </Box>
-                </Link>
-            </Flex>
+            </Grid>
         </>
     );
 }
