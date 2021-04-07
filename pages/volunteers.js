@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import useSWR from "swr";
 import { Grid } from "@chakra-ui/layout";
 import Layout from "../components/Layout";

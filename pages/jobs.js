@@ -1,23 +1,42 @@
-import Head from 'next/head';
-import styles from '../styles/Home.module.css';
-import { Box, SimpleGrid, Center, Text, Container } from '@chakra-ui/react';
-import Link from 'next/link';
-import Layout from '../components/Layout';
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import {
+  Box,
+  SimpleGrid,
+  Center,
+  Text,
+  Container,
+  Grid,
+} from "@chakra-ui/react";
+import Job from "../components/Job";
+import Link from "next/link";
+import Layout from "../components/Layout";
+import useSWR from "swr";
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function JobsPage() {
-    return (
-        <>
-            <Layout>
-                <Container centerContent>
-                    <Text>This will be the Jobs Page</Text>
-                    <Text mt="5px" color="colors.blue">
-                        Go back to{' '}
-                        <Link href="/" color="blue">
-                            home page
-                        </Link>
-                    </Text>
-                </Container>
-            </Layout>
-        </>
-    );
+  const { data, error } = useSWR("http://localhost:3000/api/jobs", fetcher);
+
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
+
+  return (
+    <>
+      <Layout color="black">
+        <Grid
+          placeSelf="center"
+          pt={120}
+          color="black"
+          templateColumns="repeat(4, 1fr)"
+          gap={5}
+        >
+          {/* @todo filter only users with userType volunteer */}
+          {data.map((job) => {
+            return <Job key={job._id} job={job} />;
+          })}
+        </Grid>
+      </Layout>
+    </>
+  );
 }
