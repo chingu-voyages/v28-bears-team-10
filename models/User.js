@@ -21,9 +21,6 @@ var user = new Schema({
         type: String,
         maxlength: 150
     },
-    avatar: {
-        type: String
-    },
     job_listings: {
         type: Array
     },
