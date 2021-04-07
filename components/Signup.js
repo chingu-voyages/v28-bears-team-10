@@ -65,7 +65,7 @@ export default function Signup() {
                 <Text color="black">What type of profile would you like to set up?</Text>
                 <Select
                     placeholder="User type"
-                    name="location"
+                    name="user type"
                     onChange={(e) => setUserType(e.target.value)}>
                     <option value="Volunteer">Volunteer</option>
                     <option value="Charity">Charity</option>

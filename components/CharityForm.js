@@ -57,7 +57,7 @@ const CharityForm = ({ handleChange }) => {
                 <FormControl id="description" my={2}>
                     <FormLabel>Description</FormLabel>
                     <Textarea
-                        maxlength="150"
+                        maxLength="150"
                         placeholder="Write a sentance or two about your charity and its mission "
                         name="description"
                         onChange={handleChange}
