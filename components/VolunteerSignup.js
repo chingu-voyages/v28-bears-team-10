@@ -13,10 +13,12 @@ import {
     GridItem
 } from '@chakra-ui/react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import CountrySelector from './CountrySelector';
 import SkillsSelector from './SkillsSelector';
 
 export default function VolunteerSignupForm() {
+    const router = useRouter();
     const [form, setForm] = useState({
         username: '',
         first_name: '',
@@ -62,8 +64,7 @@ export default function VolunteerSignupForm() {
                 },
                 body: JSON.stringify(form)
             });
-            //TODO - decide on where to redirect to an update below
-            //   router.push(`/project/${currentProject.id}/taskview`);
+            router.push(`/volunteers`);
         } catch (error) {
             console.log(error);
         }
