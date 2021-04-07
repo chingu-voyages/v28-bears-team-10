@@ -15,8 +15,6 @@ export default function Nav({ children }) {
                 top={0}
                 w="100vw"
                 height="70px"
-                // alignItems="center"
-                // justifyContent="center"
                 placeItems="center"
                 color="black"
                 px="1%"
@@ -27,7 +25,7 @@ export default function Nav({ children }) {
                         TECHVolunteer
                     </Text>
                 </GridItem>
-                <GridItem colStart={4} colEnd={9} direction="row" justify="center">
+                <GridItem colStart={4} colEnd={8} direction="row" justify="center">
                     <Box
                         mx="5px"
                         as="button"
@@ -63,7 +61,7 @@ export default function Nav({ children }) {
                     </Box>
                 </GridItem>
 
-                <GridItem colSpan={3} direction="row" display="flex">
+                <GridItem pl="80px" colStart={8} colEnd={12}>
                     <Tooltip label="Coming Soon" aria-label="A tooltip">
                         <Box
                             mx="5px"
@@ -73,12 +71,12 @@ export default function Nav({ children }) {
                             color="white"
                             px={2}
                             h={10}>
-                            <Text p="0" fontWeight="600">
+                            <Text p="0" fontWeight="600" fontSize="14px">
                                 CHARITY SIGN UP
                             </Text>
                         </Box>
                     </Tooltip>
-                    <Link href={'/volunteer/signup'}>
+                    <Link href="/volunteer/signup">
                         <Box
                             mx="5px"
                             as="button"
