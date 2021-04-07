@@ -7,7 +7,7 @@ import Profile from '../components/Profile';
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function VolunteersPage() {
-    const { data, error } = useSWR('http://localhost:3000/api/devs', fetcher);
+    const { data, error } = useSWR('http://localhost:3000/api/users', fetcher);
 
     if (error) return <div>failed to load</div>;
     if (!data) return <div>loading...</div>;
