@@ -81,7 +81,7 @@ export default function Nav({ children }) {
                                         px={2}
                                         h={10}>
                                         <Text p="0" fontWeight="600">
-                                            CHARITY SIGN UP
+                                            SIGN UP
                                         </Text>
                                     </Box>
                                 </Link>
@@ -95,7 +95,7 @@ export default function Nav({ children }) {
                                     color="white"
                                     px={2}
                                     h={10}>
-                                    <Text fontWeight="600">VOLUNTEER SIGN UP</Text>
+                                    <Text fontWeight="600">LOGIN</Text>
                                 </Box>
                             </Link>
                         </>
@@ -113,6 +113,18 @@ export default function Nav({ children }) {
                                     px={2}
                                     h={10}>
                                     <Text fontWeight="600">LOGOUT</Text>
+                                </Box>
+                            </Link>{' '}
+                            <Link href={'/volunteer/profile'}>
+                                <Box
+                                    mx="5px"
+                                    as="button"
+                                    borderRadius="md"
+                                    bg="orange"
+                                    color="white"
+                                    px={2}
+                                    h={10}>
+                                    <Text fontWeight="600">PROFILE</Text>
                                 </Box>
                             </Link>{' '}
                         </>

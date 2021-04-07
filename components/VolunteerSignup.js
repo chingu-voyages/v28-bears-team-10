@@ -16,7 +16,11 @@ import Link from 'next/link';
 import CountrySelector from './CountrySelector';
 import SkillsSelector from './SkillsSelector';
 
+import { useUser } from '@auth0/nextjs-auth0';
+
 export default function VolunteerSignupForm() {
+    const { user, error, isLoading } = useUser();
+
     const [form, setForm] = useState({
         username: '',
         first_name: '',

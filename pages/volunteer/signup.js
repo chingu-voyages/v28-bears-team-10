@@ -4,7 +4,9 @@ import Link from 'next/link';
 import Layout from '../../components/Layout';
 import VolunteerSignupForm from '../../components/volunteerSignup';
 
-export default function VolunteersSignupPage() {
+import { withPageAuthRequired } from '@auth0/nextjs-auth0';
+
+export default withPageAuthRequired(function VolunteersSignupPage() {
     return (
         <>
             <Layout>
@@ -17,4 +19,4 @@ export default function VolunteersSignupPage() {
             </Layout>
         </>
     );
-}
+});
