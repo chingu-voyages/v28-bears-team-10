@@ -4,7 +4,11 @@ import { Tooltip, Button } from '@chakra-ui/react';
 import { InfoOutlineIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
 
+import { useUser } from '@auth0/nextjs-auth0';
+
 export default function Nav({ children }) {
+    const { user, error, isLoading } = useUser();
+
     return (
         <>
             <Grid
@@ -64,32 +68,55 @@ export default function Nav({ children }) {
                 </GridItem>
 
                 <GridItem colSpan={3} direction="row" display="flex">
-                    <Tooltip label="Coming Soon" aria-label="A tooltip">
-                        <Box
-                            mx="5px"
-                            as="button"
-                            borderRadius="md"
-                            bg="blue"
-                            color="white"
-                            px={2}
-                            h={10}>
-                            <Text p="0" fontWeight="600">
-                                CHARITY SIGN UP
-                            </Text>
-                        </Box>
-                    </Tooltip>
-                    <Link href={'/volunteer/signup'}>
-                        <Box
-                            mx="5px"
-                            as="button"
-                            borderRadius="md"
-                            bg="orange"
-                            color="white"
-                            px={2}
-                            h={10}>
-                            <Text fontWeight="600">VOLUNTEER SIGN UP</Text>
-                        </Box>
-                    </Link>
+                    {!user && (
+                        <>
+                            <Tooltip label="Coming Soon" aria-label="A tooltip">
+                                <Link href={'/api/auth/login'}>
+                                    <Box
+                                        mx="5px"
+                                        as="button"
+                                        borderRadius="md"
+                                        bg="blue"
+                                        color="white"
+                                        px={2}
+                                        h={10}>
+                                        <Text p="0" fontWeight="600">
+                                            CHARITY SIGN UP
+                                        </Text>
+                                    </Box>
+                                </Link>
+                            </Tooltip>
+                            <Link href={'/api/auth/login'}>
+                                <Box
+                                    mx="5px"
+                                    as="button"
+                                    borderRadius="md"
+                                    bg="orange"
+                                    color="white"
+                                    px={2}
+                                    h={10}>
+                                    <Text fontWeight="600">VOLUNTEER SIGN UP</Text>
+                                </Box>
+                            </Link>
+                        </>
+                    )}
+                    {user && (
+                        <>
+                            {' '}
+                            <Link href={'/api/auth/logout'}>
+                                <Box
+                                    mx="5px"
+                                    as="button"
+                                    borderRadius="md"
+                                    bg="orange"
+                                    color="white"
+                                    px={2}
+                                    h={10}>
+                                    <Text fontWeight="600">LOGOUT</Text>
+                                </Box>
+                            </Link>{' '}
+                        </>
+                    )}
                 </GridItem>
                 <Tooltip label="Coming Soon" aria-label="A tooltip">
                     <GridItem mx="5px" colStart={12}>
