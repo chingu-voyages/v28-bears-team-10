@@ -11,7 +11,7 @@ const user = async (req, res) => {
             //   Search user in db (using id coming from query)
             const user = await User.findById(req.query.id);
 
-            // Return dev
+            // Return user
             res.status(200).json(user);
         } catch (err) {
             console.error(err.message);
@@ -52,13 +52,13 @@ const user = async (req, res) => {
         if (github) userFields.github = github;
 
         try {
-            // Search for dev (in db) that matches the id (from query)
+            // Search for user (in db) that matches the id (from query)
             let user = await User.findById(req.query.id);
             if (!user) return res.status(404).json('Not found');
 
             // @todo check if user owns the profile
 
-            // Update dev profile in db
+            // Update user profile in db
             user = await User.findByIdAndUpdate(req.query.id, { $set: userFields }, { new: true });
 
             // Return updated profile
@@ -67,8 +67,8 @@ const user = async (req, res) => {
             console.error(err.message);
             res.status(500).send('Server error');
         }
-        // @route     DELETE api/dev/:id
-        // @desc      Delete dev profile
+        // @route     DELETE api/user/:id
+        // @desc      Delete user profile
         // @access    Private
     } else if (req.method === 'DELETE') {
         try {

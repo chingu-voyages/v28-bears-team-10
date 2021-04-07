@@ -2,7 +2,7 @@ import Head from 'next/head';
 import useSWR from 'swr';
 import { Grid } from '@chakra-ui/layout';
 import Layout from '../components/Layout';
-import VolunteerProfile from '../components/VolunteerProfile';
+import Profile from '../components/Profile';
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -21,7 +21,7 @@ export default function VolunteersPage() {
                     templateColumns="repeat(4, 1fr)"
                     gap={5}>
                     {data.map((user) => {
-                        return <VolunteerProfile key={user._id} user={user} />;
+                        return <Profile key={user._id} user={user} />;
                     })}
                 </Grid>
             </Layout>

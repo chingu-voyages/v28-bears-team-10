@@ -31,9 +31,7 @@ export default withPageAuthRequired(function profile() {
                         <Image w={200} h={200} src={user.picture} alt={user.nickname} />
                         <Text>Hello, {user.email}</Text>
                         <Text>Your nickname is {user.nickname}</Text>
-                        <Link href="/volunteer/signup">Update your volunteer profile</Link>
-                        <br></br>
-                        <Link href="/volunteer/signup">Update your charity profile</Link>
+                        <Link href="/volunteer/signup">Update your profile</Link>
                     </Box>
                 </Container>
             </Layout>

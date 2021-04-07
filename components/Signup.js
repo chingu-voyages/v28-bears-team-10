@@ -4,13 +4,13 @@ import {
     FormControl,
     FormLabel,
     Input,
-    FormErrorMessage,
     FormHelperText,
-    Form,
+    Text,
     Textarea,
     Button,
     Grid,
-    GridItem
+    GridItem,
+    Select
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import CountrySelector from './CountrySelector';
@@ -18,11 +18,10 @@ import SkillsSelector from './SkillsSelector';
 
 import { useUser } from '@auth0/nextjs-auth0';
 
-export default function VolunteerSignupForm() {
+export default function SignupForm() {
+    const { user, error, isLoading } = useUser();
     const [form, setForm] = useState({
         username: '',
-        first_name: '',
-        last_name: '',
         email: 'New',
         location: '',
         website: '',
@@ -78,6 +77,11 @@ export default function VolunteerSignupForm() {
     return (
         <>
             <form onSubmit={handleSubmit}>
+                <Text color="black">What type of profile would you like to set up?</Text>
+                <Select placeholder="User type" name="location" onChange={handleChange}>
+                    <option value="Volunteer">Volunteer</option>
+                    <option value="Charity">Charity</option>
+                </Select>
                 <Grid templateColumns="1fr 1fr 1fr" columnGap={20} color="black">
                     <GridItem mx={2}>
                         <FormControl id="username" isRequired my={2}>
@@ -88,30 +92,9 @@ export default function VolunteerSignupForm() {
                                 onChange={handleChange}
                             />
                         </FormControl>
-                        <FormControl id="first_name" isRequired my={2}>
-                            <FormLabel>First name</FormLabel>
-                            <Input
-                                placeholder="Enter first name"
-                                name="first_name"
-                                onChange={handleChange}
-                            />
-                        </FormControl>
-                        <FormControl id="last_name" isRequired my={2}>
-                            <FormLabel>Last name</FormLabel>
-                            <Input
-                                placeholder="enter last name"
-                                name="last_name"
-                                onChange={handleChange}
-                            />
-                        </FormControl>
                         <FormControl id="email" isRequired my={2}>
                             <FormLabel>Email</FormLabel>
-                            <Input
-                                type="email"
-                                placeholder="Enter Email"
-                                name="email"
-                                onChange={handleChange}
-                            />
+                            <Input type="email" value={user.email} name="email" disabled />
                         </FormControl>
                         <FormControl id="country" my={2}>
                             <FormLabel>Country</FormLabel>

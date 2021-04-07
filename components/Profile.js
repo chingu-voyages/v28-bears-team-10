@@ -3,9 +3,9 @@ import { Box, Center, Container, Flex, Text, Spacer, Grid, GridItem } from '@cha
 import { Tooltip, Image, Button, Avatar, Link } from '@chakra-ui/react';
 import { InfoOutlineIcon } from '@chakra-ui/icons';
 // import Link from 'next/link';
-import styles from './VolunteerProfile.module.css';
+import styles from './Profile.module.css';
 
-export default function VolunteerProfile({ user }) {
+export default function Profile({ user }) {
     const {
         _id,
         skills,

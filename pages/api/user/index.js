@@ -3,8 +3,8 @@ import connectDB from '../../../middleware/db';
 import User from '../../../models/User';
 
 const users = async (req, res) => {
-    // @route     GET api/devs
-    // @desc      Get all devs
+    // @route     GET api/users
+    // @desc      Get all users
     // @access    Public
     if (req.method === 'GET') {
         try {
@@ -17,7 +17,7 @@ const users = async (req, res) => {
             res.status(500).send('Server error');
         }
 
-        // @route     POST api/devs
+        // @route     POST api/users
         // @desc      Add new user
         // @access    Public
     } else if (req.method === 'POST') {
