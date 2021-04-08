@@ -1,14 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import {
-  Box,
-  Text,
-  Container,
-  Heading,
-  Flex,
-  Image,
-  Link,
-  Button,
-} from "@chakra-ui/react";
+import { Box, Text, Container, Image, Link, Button } from "@chakra-ui/react";
 import Layout from "../../components/Layout";
 import { useUser } from "@auth0/nextjs-auth0";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
@@ -61,7 +52,9 @@ export default withPageAuthRequired(function profile() {
               <Text>Your github is {currentUser.github}</Text>
             )}
 
-            <Button colorScheme="teal">Update your profile</Button>
+            <Button colorScheme="teal">
+              <Link href="/profile/update">Update your profile</Link>
+            </Button>
 
             <Button colorScheme="red">Delete your profile</Button>
 
