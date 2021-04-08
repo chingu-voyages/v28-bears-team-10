@@ -130,7 +130,7 @@ export default function Nav({ children }) {
                   <Text fontWeight="600">LOGOUT</Text>
                 </Box>
               </Link>{" "}
-              <Link href={"/profile"}>
+              <Link href={`/profile/${user.sub}`}>
                 <Box
                   mx="5px"
                   as="button"

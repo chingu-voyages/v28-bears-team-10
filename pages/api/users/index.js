@@ -24,6 +24,7 @@ const users = async (req, res) => {
     // @todo add form data validation
     // Destructure data coming from form
     const {
+      sub,
       username,
       userType,
       email,
@@ -42,6 +43,7 @@ const users = async (req, res) => {
     try {
       // Create new user object with fields coming from form
       const newUser = new User({
+        sub,
         username,
         userType,
         email,

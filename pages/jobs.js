@@ -31,7 +31,6 @@ export default function JobsPage() {
           templateColumns="repeat(4, 1fr)"
           gap={5}
         >
-          {/* @todo filter only users with userType volunteer */}
           {data.map((job) => {
             return <Job key={job._id} job={job} />;
           })}

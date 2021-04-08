@@ -21,6 +21,7 @@ export default function Signup() {
   const router = useRouter();
   const { user, error, isLoading } = useUser();
   const [form, setForm] = useState({
+    sub: user.sub,
     userType: "unknown",
     username: "",
     email: user.email,
@@ -75,9 +76,8 @@ export default function Signup() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(form);
     await create();
-    router.push("/profile");
+    router.push(`/profile/${user.sub}`);
   }
   return (
     <>

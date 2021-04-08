@@ -1,1 +1,2 @@
 export const GET_CURRENT_USER = "GET_CURRENT_USER";
+export const NO_CURRENT_USER = "NO_CURRENT_USER";

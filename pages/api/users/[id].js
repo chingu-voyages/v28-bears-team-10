@@ -9,10 +9,10 @@ const user = async (req, res) => {
   if (req.method === "GET") {
     try {
       //   Search user in db (using id coming from query)
-      const user = await User.findById(req.query.id);
+      // const user = await User.findById(req.query.id);
 
-      // Search for user in db (using email)
-      // const user = await User.find({ email: req.body.email });
+      // Search for user in db (using sub)
+      const user = await User.find({ sub: req.query.id });
 
       // Return user
       res.status(200).json(user);
@@ -27,6 +27,7 @@ const user = async (req, res) => {
   if (req.method === "PUT") {
     // Destructure data coming from form
     const {
+      sub,
       username,
       userType,
       email,
@@ -44,6 +45,7 @@ const user = async (req, res) => {
 
     // Build dev object with new fields
     const userFields = {};
+    if (sub) userFields.sub = sub;
     if (username) userFields.username = username;
     if (email) userFields.email = email;
     if (userType) userFields.userType = userType;
