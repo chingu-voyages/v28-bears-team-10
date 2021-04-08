@@ -13,7 +13,10 @@ import { Tooltip, Button } from "@chakra-ui/react";
 import { InfoOutlineIcon } from "@chakra-ui/icons";
 import Link from "next/link";
 
+import { useUser } from "@auth0/nextjs-auth0";
+
 export default function Nav({ children }) {
+  const { user, error, isLoading } = useUser();
 
   return (
     <>
@@ -25,6 +28,8 @@ export default function Nav({ children }) {
         top={0}
         w="100vw"
         height="70px"
+        // alignItems="center"
+        // justifyContent="center"
         placeItems="center"
         color="black"
         px="1%"
@@ -36,7 +41,7 @@ export default function Nav({ children }) {
             TECHVolunteer
           </Text>
         </GridItem>
-        <GridItem colStart={4} colEnd={8} direction="row" justify="center">
+        <GridItem colStart={4} colEnd={9} direction="row" justify="center">
           <Box
             mx="5px"
             as="button"
@@ -74,35 +79,72 @@ export default function Nav({ children }) {
           </Box>
         </GridItem>
 
-        <GridItem pl="80px" colStart={8} colEnd={12}>
-          <Tooltip label="Coming Soon" aria-label="A tooltip">
-            <Box
-              mx="5px"
-              as="button"
-              borderRadius="md"
-              bg="blue"
-              color="white"
-              px={2}
-              h={10}
-            >
-              <Text p="0" fontWeight="600" fontSize="14px">
-                CHARITY SIGN UP
-              </Text>
-            </Box>
-          </Tooltip>
-          <Link href="/volunteer/signup">
-            <Box
-              mx="5px"
-              as="button"
-              borderRadius="md"
-              bg="orange"
-              color="white"
-              px={2}
-              h={10}
-            >
-              <Text fontWeight="600">VOLUNTEER SIGN UP</Text>
-            </Box>
-          </Link>
+        <GridItem colSpan={3} direction="row" display="flex">
+          {!user && (
+            <>
+              <Tooltip label="Coming Soon" aria-label="A tooltip">
+                <Link href={"/api/auth/login"}>
+                  <Box
+                    mx="5px"
+                    as="button"
+                    borderRadius="md"
+                    bg="blue"
+                    color="white"
+                    px={2}
+                    h={10}
+                  >
+                    <Text p="0" fontWeight="600">
+                      SIGN UP
+                    </Text>
+                  </Box>
+                </Link>
+              </Tooltip>
+              <Link href={"/api/auth/login"}>
+                <Box
+                  mx="5px"
+                  as="button"
+                  borderRadius="md"
+                  bg="orange"
+                  color="white"
+                  px={2}
+                  h={10}
+                >
+                  <Text fontWeight="600">LOGIN</Text>
+                </Box>
+              </Link>
+            </>
+          )}
+          {user && (
+            <>
+              {" "}
+              <Link href={"/api/auth/logout"}>
+                <Box
+                  mx="5px"
+                  as="button"
+                  borderRadius="md"
+                  bg="orange"
+                  color="white"
+                  px={2}
+                  h={10}
+                >
+                  <Text fontWeight="600">LOGOUT</Text>
+                </Box>
+              </Link>{" "}
+              <Link href={"/profile"}>
+                <Box
+                  mx="5px"
+                  as="button"
+                  borderRadius="md"
+                  bg="orange"
+                  color="white"
+                  px={2}
+                  h={10}
+                >
+                  <Text fontWeight="600">PROFILE</Text>
+                </Box>
+              </Link>{" "}
+            </>
+          )}
         </GridItem>
         <Tooltip label="Coming Soon" aria-label="A tooltip">
           <GridItem mx="5px" colStart={12}>
