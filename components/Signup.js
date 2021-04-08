@@ -10,6 +10,7 @@ import {
   GridItem,
   Select,
   Text,
+  createStandaloneToast,
 } from "@chakra-ui/react";
 import CountrySelector from "./CountrySelector";
 import SkillsSelector from "./SkillsSelector";
@@ -18,6 +19,8 @@ import { useRouter } from "next/router";
 import { useUser } from "@auth0/nextjs-auth0";
 
 export default function Signup() {
+  const toast = createStandaloneToast();
+
   const router = useRouter();
   const { user, error, isLoading } = useUser();
   const [form, setForm] = useState({
@@ -67,8 +70,6 @@ export default function Signup() {
         },
         body: JSON.stringify(form),
       });
-      //TODO - decide on where to redirect to an update below
-      //   router.push(`/project/${currentProject.id}/taskview`);
     } catch (error) {
       console.log(error);
     }
@@ -77,6 +78,13 @@ export default function Signup() {
   async function handleSubmit(e) {
     e.preventDefault();
     await create();
+    toast({
+      title: "Profile created",
+      description: "Your profile was successfully created.",
+      status: "success",
+      duration: 9000,
+      isClosable: true,
+    });
     router.push(`/profile/${user.sub}`);
   }
   return (
@@ -154,7 +162,7 @@ export default function Signup() {
           <Grid templateColumns="1fr 1fr 1fr" columnGap={20} color="black">
             <GridItem mx={2}>
               <FormControl id="username" isRequired my={2}>
-                <FormLabel>User name</FormLabel>
+                <FormLabel>Username</FormLabel>
                 <Input
                   placeholder="Choose username "
                   name="username"

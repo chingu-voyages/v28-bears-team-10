@@ -24,23 +24,27 @@ const jobs = async (req, res) => {
     // @todo add form data validation
     // Destructure data coming from form
     const {
+      sub,
       jobTitle,
       jobDescription,
       jobRequirements,
       jobExperienceLevel,
       jobHoursRequired,
       jobTechStack,
+      postedBy,
     } = req.body;
 
     try {
       // Create new user object with fields coming from form
       const newJob = new Job({
+        sub,
         jobTitle,
         jobDescription,
         jobRequirements,
         jobExperienceLevel,
         jobHoursRequired,
         jobTechStack,
+        postedBy,
       });
 
       // Save dev to db

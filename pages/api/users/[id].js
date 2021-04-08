@@ -65,8 +65,6 @@ const user = async (req, res) => {
       let user = await User.findById(req.query.id);
       if (!user) return res.status(404).json("Not found");
 
-      // @todo check if user owns the profile
-
       // Update user profile in db
       user = await User.findByIdAndUpdate(
         req.query.id,

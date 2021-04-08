@@ -21,10 +21,11 @@ export default function VolunteersPage() {
           templateColumns="repeat(4, 1fr)"
           gap={5}
         >
-          {/* @todo filter only users with userType volunteer */}
-          {data.map((user) => {
-            return <Profile key={user._id} user={user} />;
-          })}
+          {data
+            .filter((user) => user.userType === "volunteer")
+            .map((user) => {
+              return <Profile key={user._id} profile={user} />;
+            })}
         </Grid>
       </Layout>
     </>

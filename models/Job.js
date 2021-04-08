@@ -1,7 +1,10 @@
 import mongoose from "mongoose";
 var Schema = mongoose.Schema;
 
-var job = new Schema({
+var JobSchema = new Schema({
+  sub: {
+    type: String,
+  },
   jobTitle: {
     type: String,
     required: true,
@@ -22,17 +25,13 @@ var job = new Schema({
   jobTechStack: {
     type: Array,
   },
-  //   jobCompanyPosting: {
-  //     type: { type: mongoose.Schema.Types.ObjectId, ref: "Charity" },
-  //     required: true,
-  //   },
-  //   jobPostingApplicants: {
-  //     type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Dev" }],
-  //   },
+  postedBy: {
+    type: String,
+  },
 });
 
 mongoose.models = {};
 
-var Job = mongoose.model("Job", job);
+var Job = mongoose.model("job", JobSchema);
 
 export default Job;

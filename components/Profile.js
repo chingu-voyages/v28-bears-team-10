@@ -5,8 +5,11 @@ import { InfoOutlineIcon } from "@chakra-ui/icons";
 // import Link from 'next/link';
 import styles from "./Profile.module.css";
 
-export default function Profile({ user }) {
+import { useUser } from "@auth0/nextjs-auth0";
+
+export default function Profile({ profile }) {
   const {
+    sub,
     _id,
     skills,
     username,
@@ -19,8 +22,10 @@ export default function Profile({ user }) {
     date,
     email,
     location,
-  } = user;
+  } = profile;
   const [turned, setTurned] = React.useState(false);
+
+  const { user, error, isLoading } = useUser();
 
   const { flipcard, cardFront, cardBack, flip } = styles;
 
@@ -40,7 +45,6 @@ export default function Profile({ user }) {
         height="300px"
         borderRadius="10px"
       >
-        {!user && <Text color="black">Profile not found</Text>}
         <Flex
           direction="column"
           align="center"
@@ -129,6 +133,18 @@ export default function Profile({ user }) {
           >
             MORE INFO
           </Button>
+          {user && (
+            <Button
+              w="35%"
+              h="20px"
+              bg="orange"
+              color="white"
+              borderRadius="10px"
+              fontSize="13px"
+            >
+              <Link href={`/profile/${sub}`}>VISIT PROFILE</Link>
+            </Button>
+          )}
         </Flex>
       </Flex>
     </>
