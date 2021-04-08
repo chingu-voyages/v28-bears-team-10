@@ -1,38 +1,36 @@
 import connectDB from "../../../middleware/db";
 
-import Dev from "../../../models/Dev";
+import User from "../../../models/User";
 
-const devs = async (req, res) => {
-  // @route     GET api/devs
-  // @desc      Get all devs
+const users = async (req, res) => {
+  // @route     GET api/users
+  // @desc      Get all users
   // @access    Public
   if (req.method === "GET") {
     try {
-      // Get all devs in database
-      const devs = await Dev.find();
+      // Get all users in database
+      const users = await User.find();
 
-      res.status(200).json(devs);
+      res.status(200).json(users);
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server error");
     }
 
-    // @route     POST api/devs
-    // @desc      Add new dev
+    // @route     POST api/users
+    // @desc      Add new user
     // @access    Public
   } else if (req.method === "POST") {
     // @todo add form data validation
     // Destructure data coming from form
     const {
       username,
-      first_name,
-      last_name,
-      email,
-      gender,
+      userType,
+      profileUpdated,
       location,
-      skills,
       description,
-      avatar,
+      job_listings,
+      skills,
       website,
       twitter,
       linkedin,
@@ -40,17 +38,15 @@ const devs = async (req, res) => {
     } = req.body;
 
     try {
-      // Create new dev object with fields coming from form
-      const newDev = new Dev({
+      // Create new user object with fields coming from form
+      const newUser = new User({
         username,
-        first_name,
-        last_name,
-        email,
-        gender,
+        userType,
+        profileUpdated,
         location,
-        skills,
         description,
-        avatar,
+        job_listings,
+        skills,
         website,
         twitter,
         linkedin,
@@ -58,10 +54,10 @@ const devs = async (req, res) => {
       });
 
       // Save dev to db
-      const dev = await newDev.save();
+      const user = await newUser.save();
 
-      // Return new dev
-      res.status(200).json(dev);
+      // Return new user
+      res.status(200).json(user);
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server error");
@@ -69,4 +65,4 @@ const devs = async (req, res) => {
   }
 };
 
-export default connectDB(devs);
+export default connectDB(users);
