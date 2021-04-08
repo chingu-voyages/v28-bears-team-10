@@ -29,6 +29,8 @@ const user = async (req, res) => {
     const {
       username,
       userType,
+      email,
+      avatar,
       profileUpdated,
       location,
       description,
@@ -43,7 +45,9 @@ const user = async (req, res) => {
     // Build dev object with new fields
     const userFields = {};
     if (username) userFields.username = username;
+    if (email) userFields.email = email;
     if (userType) userFields.userType = userType;
+    if (avatar) userFields.avatar = avatar;
     if (profileUpdated) userFields.profileUpdated = profileUpdated;
     if (location) userFields.location = location;
     if (description) userFields.description = description;

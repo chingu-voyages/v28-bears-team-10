@@ -26,6 +26,8 @@ const users = async (req, res) => {
     const {
       username,
       userType,
+      email,
+      avatar,
       profileUpdated,
       location,
       description,
@@ -42,6 +44,8 @@ const users = async (req, res) => {
       const newUser = new User({
         username,
         userType,
+        email,
+        avatar,
         profileUpdated,
         location,
         description,

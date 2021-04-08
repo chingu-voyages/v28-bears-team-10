@@ -20,9 +20,8 @@ import { useUser } from "@auth0/nextjs-auth0";
 export default function Signup() {
   const router = useRouter();
   const { user, error, isLoading } = useUser();
-  const [userType, setUserType] = useState("unknown");
   const [form, setForm] = useState({
-    userType,
+    userType: "unknown",
     username: "",
     email: user.email,
     avatar: user.picture,
@@ -76,6 +75,7 @@ export default function Signup() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    console.log(form);
     await create();
     router.push("/profile");
   }
@@ -86,20 +86,13 @@ export default function Signup() {
           What type of profile would you like to set up?
         </Text>
 
-        {/* @todo fix userType */}
-        <Select
-          placeholder="User type"
-          name="userType"
-          onChange={(e) => {
-            handleChange, setUserType(e.target.value);
-          }}
-        >
-          <option value="Volunteer">Volunteer</option>
-          <option value="Charity">Charity</option>
+        <Select placeholder="User type" name="userType" onChange={handleChange}>
+          <option value="volunteer">Volunteer</option>
+          <option value="charity">Charity</option>
         </Select>
 
         {/* CHARITY FORM */}
-        {userType === "Charity" && (
+        {form.userType === "charity" && (
           <Grid templateColumns="1fr 1fr 1fr" columnGap={20} color="black">
             <GridItem mx={2}>
               <FormControl id="username" isRequired my={2}>
@@ -157,7 +150,7 @@ export default function Signup() {
         )}
 
         {/* VOLUNTEER FORM */}
-        {userType === "Volunteer" && (
+        {form.userType === "volunteer" && (
           <Grid templateColumns="1fr 1fr 1fr" columnGap={20} color="black">
             <GridItem mx={2}>
               <FormControl id="username" isRequired my={2}>
