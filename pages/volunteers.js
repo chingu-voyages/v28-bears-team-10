@@ -23,7 +23,7 @@ export default function VolunteersPage() {
         >
           {/* @todo filter only users with userType volunteer */}
           {data.map((user) => {
-            return <Profile key={user._id} user={user} />;
+            return <Profile key={user._id} profile={user} />;
           })}
         </Grid>
       </Layout>

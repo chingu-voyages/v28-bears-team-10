@@ -9,6 +9,7 @@ import {
   Grid,
   GridItem,
   Text,
+  createStandaloneToast,
 } from "@chakra-ui/react";
 import CountrySelector from "./CountrySelector";
 import SkillsSelector from "./SkillsSelector";
@@ -19,6 +20,7 @@ import { useUser } from "@auth0/nextjs-auth0";
 import UsersContext from "../context/users/usersContext";
 
 export default function Update() {
+  const toast = createStandaloneToast();
   const usersContext = useContext(UsersContext);
   const { currentUser, getCurrentUser } = usersContext;
   const { user, error, isLoading } = useUser();
@@ -66,20 +68,23 @@ export default function Update() {
     }
   }
 
-  async function create() {
+  async function update() {
     try {
-      // @todo fix put request not working
-      const res = await fetch(
-        `http://localhost:3000/api/users${currentUser._id}`,
-        {
-          method: "PUT",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(form),
-        }
-      );
+      if (currentUser) {
+        console.log(currentUser._id);
+
+        const res = await fetch(
+          `http://localhost:3000/api/users/${currentUser._id}`,
+          {
+            method: "PUT",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(form),
+          }
+        );
+      }
     } catch (error) {
       console.log(error);
     }
@@ -87,7 +92,14 @@ export default function Update() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await create();
+    await update();
+    toast({
+      title: "Profile updated!",
+      description: "Your profile was successfully updated.",
+      status: "success",
+      duration: 9000,
+      isClosable: true,
+    });
     router.push(`/profile/${user.sub}`);
   }
   return (
@@ -162,7 +174,7 @@ export default function Update() {
               <FormControl id="username" isRequired my={2}>
                 <FormLabel>User name</FormLabel>
                 <Input
-                  placeholder="Choose username"
+                  placeholder="Enter username"
                   name="username"
                   onChange={handleChange}
                 />
