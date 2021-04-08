@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 var Schema = mongoose.Schema;
 
-var user = new Schema({
+var UserSchema = new Schema({
   sub: {
     type: String,
   },
@@ -57,6 +57,6 @@ var user = new Schema({
 
 mongoose.models = {};
 
-var User = mongoose.model("User", user);
+var User = mongoose.model("User", UserSchema);
 
 export default User;

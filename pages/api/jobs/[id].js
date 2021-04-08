@@ -24,29 +24,31 @@ const job = async (req, res) => {
   if (req.method === "PUT") {
     // Destructure data coming from form
     const {
+      sub,
       jobTitle,
       jobDescription,
       jobRequirements,
       jobExperienceLevel,
       jobHoursRequired,
       jobTechStack,
+      postedBy,
     } = req.body;
 
     // Build dev object with new fields
     const jobFields = {};
     if (jobTitle) jobFields.jobTitle = jobTitle;
+    if (sub) jobFields.sub = sub;
     if (jobDescription) jobFields.jobDescription = jobDescription;
     if (jobRequirements) jobFields.jobRequirements = jobRequirements;
     if (jobExperienceLevel) jobFields.jobExperienceLevel = jobExperienceLevel;
     if (jobHoursRequired) jobFields.jobHoursRequired = jobHoursRequired;
     if (jobTechStack) jobFields.jobTechStack = jobTechStack;
+    if (postedBy) jobFields.postedBy = postedBy;
 
     try {
       // Search for user (in db) that matches the id (from query)
       let job = await Job.findById(req.query.id);
       if (!job) return res.status(404).json("Not found");
-
-      // @todo check if job owns the profile
 
       // Update job profile in db
       job = await Job.findByIdAndUpdate(
@@ -69,8 +71,6 @@ const job = async (req, res) => {
       // Check if user with id (coming from query) exists
       let job = await Job.findById(req.query.id);
       if (!job) return res.status(404).json("Not found");
-
-      // @todo check if job owns the profile
 
       //  Find job with id (coming from query) and remove from db
       await Job.findByIdAndRemove(req.query.id);

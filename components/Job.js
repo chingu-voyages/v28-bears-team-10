@@ -7,6 +7,7 @@ import styles from "./Profile.module.css";
 
 export default function Profile({ job }) {
   const {
+    sub,
     jobTitle,
     jobDescription,
     jobRequirements,
@@ -26,6 +27,7 @@ export default function Profile({ job }) {
   }, []);
 
   return (
+    // @todo add job fields and style
     <>
       <Flex
         bg="blue"
@@ -123,6 +125,18 @@ export default function Profile({ job }) {
           >
             MORE INFO
           </Button>
+          {job && (
+            <Button
+              w="35%"
+              h="20px"
+              bg="orange"
+              color="white"
+              borderRadius="10px"
+              fontSize="13px"
+            >
+              <Link href={`/profile/${sub}`}>VISIT PROFILE</Link>
+            </Button>
+          )}
         </Flex>
       </Flex>
     </>

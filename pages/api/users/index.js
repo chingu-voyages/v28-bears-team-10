@@ -21,7 +21,6 @@ const users = async (req, res) => {
     // @desc      Add new user
     // @access    Public
   } else if (req.method === "POST") {
-    // @todo add form data validation
     // Destructure data coming from form
     const {
       sub,

@@ -105,7 +105,7 @@ export default function Update() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <Text color="black">Update your profile</Text>
+        <Text color="black">Update Profile</Text>
 
         {/* @todo prepopulate form with previous info */}
 

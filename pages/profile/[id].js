@@ -1,4 +1,5 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
 import {
   Box,
   Text,
@@ -6,6 +7,7 @@ import {
   Image,
   Link,
   Button,
+  Heading,
   AlertDialog,
   AlertDialogBody,
   AlertDialogFooter,
@@ -27,29 +29,60 @@ export default withPageAuthRequired(function profile() {
   const { currentUser, getCurrentUser } = usersContext;
   const { user, error, isLoading } = useUser();
 
+  const [jobs, setJobs] = useState();
+
   const [isOpen, setIsOpen] = React.useState(false);
   const onClose = () => setIsOpen(false);
   const cancelRef = React.useRef();
 
   useEffect(() => {
     user && getCurrentUser(router.query.id);
+    getJobs();
   }, [user]);
 
-  // Add job
-  async function addJob() {
+  // Get all jobs
+  async function getJobs() {
     try {
-      console.log("add job");
+      const res = await axios.get("http://localhost:3000/api/jobs");
+      setJobs(res.data);
+    } catch (err) {
+      console.log(error);
+    }
+  }
+
+  // Edit job
+
+  // Delete job
+  async function deleteJob(id) {
+    try {
+      if (currentUser) {
+        const res = await fetch(`http://localhost:3000/api/jobs/${id}`, {
+          method: "DELETE",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        });
+      }
+
+      toast({
+        title: "Job deleted",
+        description: "Your job was successfully deleted.",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
+
+      getJobs();
     } catch (error) {
       console.log(error);
     }
   }
 
-  // Delete profile
+  // Delete user profile
   async function onDelete() {
     try {
       if (currentUser) {
-        console.log(currentUser._id);
-
         const res = await fetch(
           `http://localhost:3000/api/users/${currentUser._id}`,
           {
@@ -79,6 +112,8 @@ export default withPageAuthRequired(function profile() {
     return (
       <Layout>
         <Container maxW="container.lg">
+          {/* User card */}
+          {/* @todo style user card */}
           <Box color="black" mt={20}>
             <Image
               w={200}
@@ -115,16 +150,16 @@ export default withPageAuthRequired(function profile() {
 
             {/* Update  */}
             {currentUser.sub === user.sub && (
-              <Button colorScheme="teal">
-                <Link href="/profile/update">Update your profile</Link>
-              </Button>
+              <Link href="/profile/update">
+                <Button colorScheme="teal">Update Profile</Button>
+              </Link>
             )}
 
             {/* Delete */}
             {currentUser.sub === user.sub && (
               <>
                 <Button colorScheme="red" onClick={() => setIsOpen(true)}>
-                  Delete your profile
+                  Delete Profile
                 </Button>
 
                 <AlertDialog
@@ -162,11 +197,39 @@ export default withPageAuthRequired(function profile() {
 
             {currentUser.sub === user.sub &&
               currentUser.userType === "charity" && (
-                <Button colorScheme="cyan" onClick={() => addJob()}>
-                  Add Job
-                </Button>
+                <Link href={`/${router.query.id}/addJob`}>
+                  <Button colorScheme="cyan">Add Job</Button>
+                </Link>
               )}
           </Box>
+
+          {/* Jobs */}
+          {currentUser.userType === "charity" && jobs && jobs.length > 0 && (
+            <>
+              <Heading size="xl" color="black">
+                Jobs Posted:
+              </Heading>
+
+              <Box color="black">
+                {jobs
+                  .filter((job) => job.postedBy === currentUser.email)
+                  .map((job, index) => (
+                    /* @todo style jobs boxes */
+                    <Box key={index} border="2px solid red">
+                      <Text>{job.jobTitle}</Text>
+                      <Text>{job.jobDescription}</Text>
+
+                      <Button
+                        onClick={() => deleteJob(job._id)}
+                        colorScheme="red"
+                      >
+                        Delete
+                      </Button>
+                    </Box>
+                  ))}
+              </Box>
+            </>
+          )}
         </Container>
       </Layout>
     );

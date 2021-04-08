@@ -37,9 +37,11 @@ export default function Nav({ children }) {
         zIndex={2}
       >
         <GridItem colSpan={2}>
-          <Text textAlign="start" fontSize={30}>
-            TECHVolunteer
-          </Text>
+          <Link href="/">
+            <Text cursor="pointer" textAlign="start" fontSize={30}>
+              TECHVolunteer
+            </Text>
+          </Link>
         </GridItem>
         <GridItem colStart={4} colEnd={9} direction="row" justify="center">
           <Box
