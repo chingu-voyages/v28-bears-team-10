@@ -1,6 +1,7 @@
 import Head from "next/head";
 import React, { useState } from "react";
 import {
+
   FormControl,
   FormLabel,
   Input,
@@ -32,7 +33,7 @@ export default function VolunteerSignupForm() {
     skills: [],
     description: "",
   });
-
+  
   function handleChange(e) {
     const checkedArr = [];
     if (e.target.type !== "checkbox") {
