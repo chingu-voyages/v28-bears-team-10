@@ -12,7 +12,7 @@ const user = async (req, res) => {
       const user = await User.findById(req.query.id);
 
       // Search for user in db (using email)
-      //   const user = await User.find({ email: req.query.id });
+      // const user = await User.find({ email: req.body.email });
 
       // Return user
       res.status(200).json(user);
