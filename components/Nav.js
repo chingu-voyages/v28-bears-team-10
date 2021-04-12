@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import {
   Box,
   Center,
@@ -16,13 +17,15 @@ import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0";
 
 export default function Nav({ children }) {
+  const router = useRouter();
+  console.log(router);
   const { user, error, isLoading } = useUser();
 
   return (
     <>
       <Grid
         templateColumns="repeat(11, 1fr) 40px"
-        templateRows={{ sm: "30px 1fr" }}
+        templateRows={{ sm: "30px 1fr", md: "1fr" }}
         rowGap={0}
         columnGap={2}
         borderBottom=" 2px solid orange"
@@ -49,54 +52,68 @@ export default function Nav({ children }) {
           </Link>
         </GridItem>
         <GridItem
-          colStart={{ base: 4, sm: 1 }}
-          colEnd={{ base: 9, sm: 9 }}
+          colStart={{ sm: 1, md: 4 }}
+          colEnd={{ sm: 9, md: 9 }}
           direction="row"
           justifyContent={{ base: "center", sm: "start" }}
         >
-          <Box
-            mx={{ base: "5px", sm: "2px" }}
-            as="button"
-            borderRadius="md"
-            bg="blue"
-            color="white"
-            px={2}
-            h={{ sm: "25px", md: "30px", lg: "50px", xl: "50px" }}
-            w={{ xl: "160px", lg: "160px", md: "100px" }}
-          >
-            <Link href="/jobs">
-              <a>
-                <Text
-                  p="0"
-                  fontWeight="600"
-                  fontSize={{ sm: "10px", md: "13px", lg: "16px", xl: "20px" }}
-                >
-                  JOBS BOARD
-                </Text>
-              </a>
-            </Link>
-          </Box>
-          <Box
-            mx={{ base: "5px", sm: "2px" }}
-            as="button"
-            borderRadius="md"
-            bg="blue"
-            color="white"
-            px={2}
-            h={{ sm: "25px", md: "30px", lg: "50px", xl: "50px" }}
-          >
-            <Link href="/volunteers">
-              <a>
-                <Text
-                  p="0"
-                  fontWeight="600"
-                  fontSize={{ sm: "10px", md: "13px", lg: "16px", xl: "20px" }}
-                >
-                  VOLUNTEERS BOARD
-                </Text>
-              </a>
-            </Link>
-          </Box>
+          {router.pathname !== "/" && (
+            <>
+              <Box
+                mx={{ sm: "2px", md: "5px" }}
+                as="button"
+                borderRadius="md"
+                bg="blue"
+                color="white"
+                px={2}
+                h={{ sm: "25px", md: "30px", lg: "50px", xl: "50px" }}
+                w={{ xl: "160px", lg: "160px", md: "100px" }}
+              >
+                <Link href="/jobs">
+                  <a>
+                    <Text
+                      p="0"
+                      fontWeight="600"
+                      fontSize={{
+                        sm: "10px",
+                        md: "13px",
+                        lg: "16px",
+                        xl: "20px",
+                      }}
+                    >
+                      JOBS BOARD
+                    </Text>
+                  </a>
+                </Link>
+              </Box>
+              <Box
+                mx={{ sm: "2px", md: "5px" }}
+                as="button"
+                borderRadius="md"
+                bg="blue"
+                color="white"
+                px={2}
+                h={{ sm: "25px", md: "30px", lg: "50px", xl: "50px" }}
+              >
+                <Link href="/volunteers">
+                  <a>
+                    <Text
+                      p="0"
+                      fontWeight="600"
+                      fontSize={{
+                        sm: "10px",
+                        md: "13px",
+                        lg: "16px",
+                        xl: "20px",
+                      }}
+                    >
+                      VOLUNTEERS BOARD
+                    </Text>
+                  </a>
+                </Link>
+              </Box>
+            </>
+          )}
         </GridItem>
         <GridItem
           colSpan={3}
@@ -110,7 +127,7 @@ export default function Nav({ children }) {
               <Tooltip label="Coming Soon" aria-label="A tooltip">
                 <Link href={"/api/auth/login"}>
                   <Box
-                    mx={{ base: "5px", sm: "2px" }}
+                    mx={{ sm: "2px", md: "5px" }}
                     as="button"
                     borderRadius="md"
                     bg="blue"
@@ -130,7 +147,7 @@ export default function Nav({ children }) {
               </Tooltip>
               <Link href={"/api/auth/login"}>
                 <Box
-                  mx={{ base: "5px", sm: "2px" }}
+                  mx={{ sm: "2px", md: "5px" }}
                   as="button"
                   borderRadius="md"
                   bg="orange"
@@ -158,7 +175,7 @@ export default function Nav({ children }) {
               {" "}
               <Link href={"/api/auth/logout"}>
                 <Box
-                  mx={{ base: "5px", sm: "2px" }}
+                  mx={{ sm: "2px", md: "5px" }}
                   as="button"
                   borderRadius="md"
                   bg="orange"
@@ -181,7 +198,7 @@ export default function Nav({ children }) {
               </Link>{" "}
               <Link href={`/profile/${user.sub}`}>
                 <Box
-                  mx={{ base: "5px", sm: "2px" }}
+                  mx={{ sm: "2px", md: "5px" }}
                   as="button"
                   borderRadius="md"
                   bg="orange"
