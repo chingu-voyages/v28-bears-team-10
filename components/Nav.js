@@ -18,7 +18,7 @@ import { useUser } from "@auth0/nextjs-auth0";
 
 export default function Nav({ children }) {
   const router = useRouter();
-  console.log(router);
+
   const { user, error, isLoading } = useUser();
 
   return (
