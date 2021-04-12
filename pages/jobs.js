@@ -28,13 +28,14 @@ export default function JobsPage() {
       <Layout color="black">
         <Grid
           placeSelf="center"
+          mx="20px"
           pt={120}
           color="black"
           templateColumns={{
             sm: "1fr",
-            md: "1fr 1fr",
-            lg: "repeat(3, 1fr)",
-            xl: "repeat(4, 1fr)",
+            md: "1fr",
+            lg: "1fr 1fr",
+            xl: "1fr 1fr",
           }}
           gap={5}
         >

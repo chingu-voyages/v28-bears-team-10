@@ -10,6 +10,7 @@ import {
   createStandaloneToast,
   Container,
   Box,
+  Textarea,
 } from "@chakra-ui/react";
 
 import Layout from "../../components/Layout";
@@ -108,10 +109,12 @@ export default withPageAuthRequired(function addJob() {
                   </FormControl>
                   <FormControl id="jobDescription" isRequired my={2}>
                     <FormLabel>Job Description</FormLabel>
-                    <Input
+                    <Textarea
                       name="jobDescription"
                       placeholder="Add job description"
                       onChange={handleChange}
+                      maxLength="750"
+                      width="500px"
                     />
                   </FormControl>
                 </GridItem>

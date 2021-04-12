@@ -74,14 +74,7 @@ export default function Profile({ profile }) {
           h="51%"
         >
           <Flex className={cardFront} direction="column" align="center">
-            <Grid
-              pt={0}
-              w="80%"
-              templateColumns="1fr 1fr"
-              // justifyContent="center"
-              // align="center"
-              // border="solid red 1px"
-            >
+            <Grid pt={0} w="80%" templateColumns="1fr 1fr">
               {skills &&
                 skills.map((skill) => (
                   <Text fontSize="15px" key={skill}>

@@ -104,9 +104,9 @@ export default function Signup() {
           <Grid templateColumns="1fr 1fr 1fr" columnGap={20} color="black">
             <GridItem mx={2}>
               <FormControl id="username" isRequired my={2}>
-                <FormLabel>User name</FormLabel>
+                <FormLabel>Organisation Name</FormLabel>
                 <Input
-                  placeholder="Choose username "
+                  placeholder="Please enter the name of your organisation "
                   name="username"
                   onChange={handleChange}
                 />
