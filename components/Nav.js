@@ -124,7 +124,6 @@ export default function Nav({ children }) {
         >
           {!user && (
             <>
-              <Tooltip label="Coming Soon" aria-label="A tooltip">
                 <Link href={"/api/auth/login"}>
                   <Box
                     mx={{ sm: "2px", md: "5px" }}

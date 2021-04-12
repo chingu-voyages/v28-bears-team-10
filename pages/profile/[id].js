@@ -15,6 +15,8 @@ import {
   AlertDialogContent,
   AlertDialogOverlay,
   createStandaloneToast,
+  Spinner,
+  Flex,
 } from "@chakra-ui/react";
 import Layout from "../../components/Layout";
 import { useUser } from "@auth0/nextjs-auth0";
@@ -23,6 +25,7 @@ import UsersContext from "../../context/users/usersContext";
 import { useRouter } from "next/router";
 
 export default withPageAuthRequired(function profile() {
+  const [loading, setLoading] = useState(false);
   const toast = createStandaloneToast();
   const router = useRouter();
   const usersContext = useContext(UsersContext);
@@ -38,7 +41,12 @@ export default withPageAuthRequired(function profile() {
   useEffect(() => {
     user && getCurrentUser(router.query.id);
     getJobs();
-  }, [user]);
+  }, [user, currentUser]);
+
+  useEffect(() => {
+    setLoading(true);
+    currentUser && setLoading(false);
+  }, [currentUser]);
 
   // Get all jobs
   async function getJobs() {
@@ -49,8 +57,6 @@ export default withPageAuthRequired(function profile() {
       console.log(error);
     }
   }
-
-  // Edit job
 
   // Delete job
   async function deleteJob(id) {
@@ -108,7 +114,23 @@ export default withPageAuthRequired(function profile() {
     }
   }
 
-  if (user && currentUser) {
+  if (loading) {
+    return (
+      <Layout>
+        <Container maxW="container.lg">
+          <Flex
+            alignItems="center"
+            justifyContent="center"
+            color="black"
+            height="90vh"
+            mt={20}
+          >
+            <Spinner size="xl" />
+          </Flex>
+        </Container>
+      </Layout>
+    );
+  } else if (user && currentUser) {
     return (
       <Layout>
         <Container maxW="container.lg">
@@ -206,9 +228,12 @@ export default withPageAuthRequired(function profile() {
           {/* Jobs */}
           {currentUser.userType === "charity" && jobs && jobs.length > 0 && (
             <>
-              <Heading size="xl" color="black">
-                Jobs Posted:
-              </Heading>
+              {jobs.filter((job) => job.postedBy === currentUser.email)
+                .length !== 0 && (
+                <Heading size="xl" color="black">
+                  Jobs Posted:
+                </Heading>
+              )}
 
               <Box color="black">
                 {jobs
@@ -219,12 +244,14 @@ export default withPageAuthRequired(function profile() {
                       <Text>{job.jobTitle}</Text>
                       <Text>{job.jobDescription}</Text>
 
-                      <Button
-                        onClick={() => deleteJob(job._id)}
-                        colorScheme="red"
-                      >
-                        Delete
-                      </Button>
+                      {job.postedBy === user.email && (
+                        <Button
+                          onClick={() => deleteJob(job._id)}
+                          colorScheme="red"
+                        >
+                          Delete
+                        </Button>
+                      )}
                     </Box>
                   ))}
               </Box>

@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import {
@@ -16,6 +17,7 @@ import useSWR from "swr";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function JobsPage() {
+  const [loading, setLoading] = useState(false);
   const { data, error } = useSWR("http://localhost:3000/api/jobs", fetcher);
 
   if (error) return <div>failed to load</div>;

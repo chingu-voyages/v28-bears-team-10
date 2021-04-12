@@ -21,7 +21,7 @@ const jobs = async (req, res) => {
     // @desc      Add new job
     // @access    Public
   } else if (req.method === "POST") {
-    // @todo add form data validation
+    //  add form data validation
     // Destructure data coming from form
     const {
       sub,
