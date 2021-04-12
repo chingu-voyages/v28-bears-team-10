@@ -15,6 +15,8 @@ import {
   AlertDialogContent,
   AlertDialogOverlay,
   createStandaloneToast,
+  Spinner,
+  Flex,
 } from "@chakra-ui/react";
 import Layout from "../../components/Layout";
 import { useUser } from "@auth0/nextjs-auth0";
@@ -23,6 +25,7 @@ import UsersContext from "../../context/users/usersContext";
 import { useRouter } from "next/router";
 
 export default withPageAuthRequired(function profile() {
+  const [loading, setLoading] = useState(false);
   const toast = createStandaloneToast();
   const router = useRouter();
   const usersContext = useContext(UsersContext);
@@ -39,6 +42,11 @@ export default withPageAuthRequired(function profile() {
     user && getCurrentUser(router.query.id);
     getJobs();
   }, [user, currentUser]);
+
+  useEffect(() => {
+    setLoading(true);
+    currentUser && setLoading(false);
+  }, [currentUser]);
 
   // Get all jobs
   async function getJobs() {
@@ -106,7 +114,23 @@ export default withPageAuthRequired(function profile() {
     }
   }
 
-  if (user && currentUser) {
+  if (loading) {
+    return (
+      <Layout>
+        <Container maxW="container.lg">
+          <Flex
+            alignItems="center"
+            justifyContent="center"
+            color="black"
+            height="90vh"
+            mt={20}
+          >
+            <Spinner size="xl" />
+          </Flex>
+        </Container>
+      </Layout>
+    );
+  } else if (user && currentUser) {
     return (
       <Layout>
         <Container maxW="container.lg">

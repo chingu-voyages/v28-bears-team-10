@@ -84,26 +84,8 @@ export default function Nav({ children }) {
         <GridItem colSpan={3} direction="row" display="flex">
           {!user && (
             <>
-              <Tooltip label="Coming Soon" aria-label="A tooltip">
-                <Link href={"/api/auth/login"}>
-                  <Box
-                    mx="5px"
-                    as="button"
-                    borderRadius="md"
-                    bg="blue"
-                    color="white"
-                    px={2}
-                    h={10}
-                  >
-                    <Text p="0" fontWeight="600">
-                      SIGN UP
-                    </Text>
-                  </Box>
-                </Link>
-              </Tooltip>
               <Link href={"/api/auth/login"}>
                 <Box
-                  mx="5px"
                   as="button"
                   borderRadius="md"
                   bg="orange"
