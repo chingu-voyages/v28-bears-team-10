@@ -124,26 +124,26 @@ export default function Nav({ children }) {
         >
           {!user && (
             <>
-                <Link href={"/api/auth/login"}>
-                  <Box
-                    mx={{ sm: "2px", md: "5px" }}
-                    as="button"
-                    borderRadius="md"
-                    bg="blue"
-                    color="white"
-                    px={2}
-                    h={{ sm: "25px", md: "30px", lg: "50px", xl: "50px" }}
+              <Link href={"/api/auth/login"}>
+                <Box
+                  mx={{ sm: "2px", md: "5px" }}
+                  as="button"
+                  borderRadius="md"
+                  bg="blue"
+                  color="white"
+                  px={2}
+                  h={{ sm: "25px", md: "30px", lg: "50px", xl: "50px" }}
+                >
+                  <Text
+                    p="0"
+                    fontWeight="600"
+                    fontSize={{ sm: "10px", md: "15px" }}
                   >
-                    <Text
-                      p="0"
-                      fontWeight="600"
-                      fontSize={{ sm: "10px", md: "15px" }}
-                    >
-                      SIGN UP
-                    </Text>
-                  </Box>
-                </Link>
-              </Tooltip>
+                    SIGN UP
+                  </Text>
+                </Box>
+              </Link>
+
               <Link href={"/api/auth/login"}>
                 <Box
                   mx={{ sm: "2px", md: "5px" }}
