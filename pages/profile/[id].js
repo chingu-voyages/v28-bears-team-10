@@ -38,7 +38,7 @@ export default withPageAuthRequired(function profile() {
   useEffect(() => {
     user && getCurrentUser(router.query.id);
     getJobs();
-  }, [user]);
+  }, [user, currentUser]);
 
   // Get all jobs
   async function getJobs() {
@@ -49,8 +49,6 @@ export default withPageAuthRequired(function profile() {
       console.log(error);
     }
   }
-
-  // Edit job
 
   // Delete job
   async function deleteJob(id) {
@@ -206,9 +204,12 @@ export default withPageAuthRequired(function profile() {
           {/* Jobs */}
           {currentUser.userType === "charity" && jobs && jobs.length > 0 && (
             <>
-              <Heading size="xl" color="black">
-                Jobs Posted:
-              </Heading>
+              {jobs.filter((job) => job.postedBy === currentUser.email)
+                .length !== 0 && (
+                <Heading size="xl" color="black">
+                  Jobs Posted:
+                </Heading>
+              )}
 
               <Box color="black">
                 {jobs
@@ -219,12 +220,14 @@ export default withPageAuthRequired(function profile() {
                       <Text>{job.jobTitle}</Text>
                       <Text>{job.jobDescription}</Text>
 
-                      <Button
-                        onClick={() => deleteJob(job._id)}
-                        colorScheme="red"
-                      >
-                        Delete
-                      </Button>
+                      {job.postedBy === user.email && (
+                        <Button
+                          onClick={() => deleteJob(job._id)}
+                          colorScheme="red"
+                        >
+                          Delete
+                        </Button>
+                      )}
                     </Box>
                   ))}
               </Box>

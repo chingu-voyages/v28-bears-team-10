@@ -87,8 +87,6 @@ const user = async (req, res) => {
       let user = await User.findById(req.query.id);
       if (!user) return res.status(404).json("Not found");
 
-      // @todo check if user owns the profile
-
       //  Find user with id (coming from query) and remove from db
       await User.findByIdAndRemove(req.query.id);
       return res.status(200).json("Removed");
