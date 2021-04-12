@@ -11,6 +11,7 @@ export default function VolunteersPage() {
 
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
+
   return (
     <>
       <Layout color="black">
@@ -18,7 +19,12 @@ export default function VolunteersPage() {
           placeSelf="center"
           pt={120}
           color="black"
-          templateColumns="repeat(4, 1fr)"
+          templateColumns={{
+            sm: "1fr",
+            md: "1fr 1fr",
+            lg: "repeat(3, 1fr)",
+            xl: "repeat(4, 1fr)",
+          }}
           gap={5}
         >
           {data

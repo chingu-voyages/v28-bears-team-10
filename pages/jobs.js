@@ -30,7 +30,12 @@ export default function JobsPage() {
           placeSelf="center"
           pt={120}
           color="black"
-          templateColumns="repeat(4, 1fr)"
+          templateColumns={{
+            sm: "1fr",
+            md: "1fr 1fr",
+            lg: "repeat(3, 1fr)",
+            xl: "repeat(4, 1fr)",
+          }}
           gap={5}
         >
           {data.map((job) => {

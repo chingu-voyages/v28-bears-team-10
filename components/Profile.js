@@ -74,7 +74,14 @@ export default function Profile({ profile }) {
           h="51%"
         >
           <Flex className={cardFront} direction="column" align="center">
-            <Grid pt={0} w="50%" templateColumns="1fr 1fr">
+            <Grid
+              pt={0}
+              w="80%"
+              templateColumns="1fr 1fr"
+              // justifyContent="center"
+              // align="center"
+              // border="solid red 1px"
+            >
               {skills &&
                 skills.map((skill) => (
                   <Text fontSize="15px" key={skill}>
@@ -133,7 +140,7 @@ export default function Profile({ profile }) {
           >
             MORE INFO
           </Button>
-          {user && (
+          {/* {user && (
             <Button
               w="35%"
               h="20px"
@@ -144,7 +151,7 @@ export default function Profile({ profile }) {
             >
               <Link href={`/profile/${sub}`}>VISIT PROFILE</Link>
             </Button>
-          )}
+          )} */}
         </Flex>
       </Flex>
     </>
