@@ -13,6 +13,7 @@ import Job from "../components/Job";
 import Link from "next/link";
 import Layout from "../components/Layout";
 import useSWR from "swr";
+import SEO from "../components/SEO";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -25,11 +26,13 @@ export default function JobsPage() {
 
   return (
     <>
+      <SEO title="Jobs" />
       <Layout color="black">
         <Grid
+          fontFamily="Glacial Indifference"
           placeSelf="center"
-          mx="20px"
-          pt={120}
+          mx={{ sm: "10px", md: "20px", lg: "80px" }}
+          pt={10}
           color="black"
           templateColumns={{
             sm: "1fr",

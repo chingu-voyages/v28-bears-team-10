@@ -7,6 +7,7 @@ import Layout from "../components/Layout";
 
 import UsersContext from "../context/users/usersContext";
 import { useUser } from "@auth0/nextjs-auth0";
+import SEO from "../components/SEO";
 
 export default function Home() {
   const usersContext = useContext(UsersContext);
@@ -19,45 +20,48 @@ export default function Home() {
   }, [user]);
 
   return (
-    <Layout>
-      <main>
-        <SimpleGrid columns={2} spacing={10} pt={150}>
-          <Link href="/jobs">
-            <a>
-              <Center
-                bg="blue"
-                w="400px"
-                h="400px"
-                p={10}
-                color="white"
-                borderRadius="10px"
-              >
-                <Text textAlign={["left", "center"]} fontSize={30}>
-                  Search for a job
-                </Text>
-              </Center>
-            </a>
-          </Link>
-          <Link href="/volunteers">
-            <a>
-              <Center
-                bg="blue"
-                w="400px"
-                h="400px"
-                p={10}
-                color="white"
-                borderRadius="10px"
-              >
-                <Text textAlign={["left", "center"]} fontSize={30}>
-                  Search for a volunteer
-                </Text>
-              </Center>
-            </a>
-          </Link>
-        </SimpleGrid>
-      </main>
+    <>
+      <SEO title="Home" />
+      <Layout>
+        <main>
+          <SimpleGrid columns={2} spacing={10} pt={20}>
+            <Link href="/jobs">
+              <a>
+                <Center
+                  bg="blue"
+                  w="400px"
+                  h="400px"
+                  p={10}
+                  color="white"
+                  borderRadius="10px"
+                >
+                  <Text textAlign={["left", "center"]} fontSize={30}>
+                    Search for a job
+                  </Text>
+                </Center>
+              </a>
+            </Link>
+            <Link href="/volunteers">
+              <a>
+                <Center
+                  bg="blue"
+                  w="400px"
+                  h="400px"
+                  p={10}
+                  color="white"
+                  borderRadius="10px"
+                >
+                  <Text textAlign={["left", "center"]} fontSize={30}>
+                    Search for a volunteer
+                  </Text>
+                </Center>
+              </a>
+            </Link>
+          </SimpleGrid>
+        </main>
 
-      <footer></footer>
-    </Layout>
+        <footer></footer>
+      </Layout>
+    </>
   );
 }

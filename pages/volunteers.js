@@ -3,6 +3,7 @@ import useSWR from "swr";
 import { Grid } from "@chakra-ui/layout";
 import Layout from "../components/Layout";
 import Profile from "../components/Profile";
+import SEO from "../components/SEO";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -14,11 +15,13 @@ export default function VolunteersPage() {
 
   return (
     <>
+      <SEO title="Volunteers" />
       <Layout color="black">
         <Grid
           placeSelf="center"
-          pt={120}
+          pt={10}
           color="black"
+          fontFamily="Glacial Indifference"
           templateColumns={{
             sm: "1fr",
             md: "1fr 1fr",
