@@ -29,8 +29,8 @@ export default function JobsPage() {
         <Grid
           fontFamily="Glacial Indifference"
           placeSelf="center"
-          mx="20px"
-          pt={120}
+          mx={{ sm: "10px", md: "20px", lg: "80px" }}
+          pt={10}
           color="black"
           templateColumns={{
             sm: "1fr",

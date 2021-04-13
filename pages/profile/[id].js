@@ -142,7 +142,7 @@ export default withPageAuthRequired(function profile() {
             fontSize="18px"
           >
             {/* <Flex> */}
-            <Flex direction="row" color="black" mt={20} mb={3}>
+            <Flex direction="row" color="black" mt={4} mb={3}>
               <Image
                 w={200}
                 h={200}

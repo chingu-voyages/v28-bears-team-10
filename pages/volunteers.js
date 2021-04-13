@@ -17,7 +17,7 @@ export default function VolunteersPage() {
       <Layout color="black">
         <Grid
           placeSelf="center"
-          pt={120}
+          pt={10}
           color="black"
           fontFamily="Glacial Indifference"
           templateColumns={{
