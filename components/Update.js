@@ -119,6 +119,7 @@ export default function Update() {
                   placeholder="Please enter the name of your organisation "
                   name="username"
                   onChange={handleChange}
+                  value={currentUser.username}
                 />
               </FormControl>
               <FormControl id="email" isRequired my={2}>
@@ -127,7 +128,10 @@ export default function Update() {
               </FormControl>
               <FormControl id="country" my={2}>
                 <FormLabel>Country</FormLabel>
-                <CountrySelector onChange={handleChange} />
+                <CountrySelector
+                  onChange={handleChange}
+                  value={currentUser.location}
+                />
               </FormControl>
             </GridItem>
             <GridItem>
@@ -137,6 +141,7 @@ export default function Update() {
                   type="text"
                   placeholder="Enter your website url"
                   name="website"
+                  value={currentUser.website}
                   onChange={handleChange}
                 />
               </FormControl>
