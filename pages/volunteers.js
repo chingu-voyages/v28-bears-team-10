@@ -8,7 +8,10 @@ import SEO from "../components/SEO";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function VolunteersPage() {
-  const { data, error } = useSWR("http://localhost:3000/api/users", fetcher);
+  const { data, error } = useSWR(
+    "https://v28-bears-team-10-kappa.vercel.app/api/users",
+    fetcher
+  );
 
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
