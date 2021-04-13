@@ -3,6 +3,7 @@ import useSWR from "swr";
 import { Grid } from "@chakra-ui/layout";
 import Layout from "../components/Layout";
 import Profile from "../components/Profile";
+import SEO from "../components/SEO";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -14,6 +15,7 @@ export default function VolunteersPage() {
 
   return (
     <>
+      <SEO title="Volunteers" />
       <Layout color="black">
         <Grid
           placeSelf="center"

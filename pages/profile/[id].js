@@ -24,6 +24,7 @@ import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import UsersContext from "../../context/users/usersContext";
 import { useRouter } from "next/router";
 import { Grid, GridItem } from "@chakra-ui/layout";
+import SEO from "../../components/SEO";
 
 export default withPageAuthRequired(function profile() {
   const [loading, setLoading] = useState(false);
@@ -135,6 +136,7 @@ export default withPageAuthRequired(function profile() {
   if (user && currentUser) {
     return (
       <>
+        <SEO title="Your Profile" />
         <Layout>
           <Container
             maxW="container.lg"
