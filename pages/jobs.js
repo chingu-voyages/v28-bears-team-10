@@ -27,6 +27,7 @@ export default function JobsPage() {
     <>
       <Layout color="black">
         <Grid
+          fontFamily="Glacial Indifference"
           placeSelf="center"
           mx="20px"
           pt={120}

@@ -19,6 +19,7 @@ export default function VolunteersPage() {
           placeSelf="center"
           pt={120}
           color="black"
+          fontFamily="Glacial Indifference"
           templateColumns={{
             sm: "1fr",
             md: "1fr 1fr",
