@@ -136,7 +136,11 @@ export default withPageAuthRequired(function profile() {
     return (
       <>
         <Layout>
-          <Container maxW="container.lg">
+          <Container
+            maxW="container.lg"
+            fontFamily="Glacial Indifference"
+            fontSize="18px"
+          >
             {/* <Flex> */}
             <Flex direction="row" color="black" mt={20} mb={3}>
               <Image
@@ -218,14 +222,20 @@ export default withPageAuthRequired(function profile() {
             >
               {currentUser.sub === user.sub && (
                 <Link href="/profile/update">
-                  <Button colorScheme="teal">Update Profile</Button>
+                  <Button colorScheme="teal" fontSize="17px">
+                    Update Profile
+                  </Button>
                 </Link>
               )}
 
               {/* Delete */}
               {currentUser.sub === user.sub && (
                 <>
-                  <Button colorScheme="red" onClick={() => setIsOpen(true)}>
+                  <Button
+                    fontSize="17px"
+                    colorScheme="red"
+                    onClick={() => setIsOpen(true)}
+                  >
                     Delete Profile
                   </Button>
 
@@ -265,7 +275,9 @@ export default withPageAuthRequired(function profile() {
               {currentUser.sub === user.sub &&
                 currentUser.userType === "charity" && (
                   <Link href={`/${router.query.id}/addJob`}>
-                    <Button colorScheme="cyan">Add Job</Button>
+                    <Button fontSize="17px" colorScheme="cyan">
+                      Add Job
+                    </Button>
                   </Link>
                 )}
             </Flex>
