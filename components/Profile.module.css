@@ -1,0 +1,22 @@
+.flipcard {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.flipcard.flip {
+    transform: rotateY(180deg);
+}
+.cardFront,
+.cardBack {
+    position: absolute;
+    height: 100%;
+    -webkit-perspective: 0;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+}
+
+.cardBack {
+    transform: rotateY(180deg);
+}

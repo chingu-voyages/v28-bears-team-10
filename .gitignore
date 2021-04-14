@@ -46,3 +46,6 @@ yarn-debug.log*
 yarn-error.log*
 
 .vercel
+
+# we are using Yarn, not npm so let's ignore any npm generated package-lock.json's
+package-lock.json
